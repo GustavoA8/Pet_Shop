@@ -285,5 +285,99 @@ namespace Pet_Shop
             //Configurar o DataGridView
             ConfiguraDataGridView();
         }
+
+        private void dgvListaClientes_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            Dados_Cliente cliente = new Dados_Cliente();
+            //Evitar o erro no clique dos títulos (linha -1)
+            if (e.RowIndex >= 0)
+            {
+                
+                //TextBox = DataGridView.LinhaSelecionada.Célula[Posição].Valor.ParaTexto
+                txtCodigo.Text = dgvListaClientes.Rows[e.RowIndex].Cells[0].Value.ToString();
+                txtNome.Text = dgvListaClientes.Rows[e.RowIndex].Cells[1].Value.ToString();
+                mtxCep.Text = dgvListaClientes.Rows[e.RowIndex].Cells[11].Value.ToString();
+                txtEmail.Text = dgvListaClientes.Rows[e.RowIndex].Cells[2].Value.ToString();
+                txtEndereco.Text = dgvListaClientes.Rows[e.RowIndex].Cells[3].Value.ToString();
+                txtn.Text = dgvListaClientes.Rows[e.RowIndex].Cells[4].Value.ToString();
+                txtBairro.Text = dgvListaClientes.Rows[e.RowIndex].Cells[5].Value.ToString();
+                txtCidade.Text = dgvListaClientes.Rows[e.RowIndex].Cells[6].Value.ToString();
+                txtUF.Text = dgvListaClientes.Rows[e.RowIndex].Cells[7].Value.ToString();
+                mtxTelefone.Text = dgvListaClientes.Rows[e.RowIndex].Cells[8].Value.ToString();
+                txtComplemento.Text = dgvListaClientes.Rows[e.RowIndex].Cells[9].Value.ToString();
+                if (dgvListaClientes.Rows[e.RowIndex].Cells[10].Value.ToString() == "Feminino")
+                {
+                    rdoF.Checked = true;
+                }
+                if (dgvListaClientes.Rows[e.RowIndex].Cells[10].Value.ToString() == "Masculino")
+                {
+                    rdoM.Checked = true;
+                }
+                else
+                {
+                    rdoB.Checked = true;
+                    txtOutros.Text = dgvListaClientes.Rows[e.RowIndex].Cells[10].Value.ToString();
+                }
+                btnEditar.Visible = true; //Ou enable
+                btnSalvar.Enabled = false;
+            }
+
+        }
+
+        private void btnEditar_Click(object sender, EventArgs e)
+        {
+            //Instância das classes AtualizarClientes e ClientesDTO
+            AtualizarDados atualizarDados = new AtualizarDados();
+            Dados_Cliente clientes = new Dados_Cliente();
+            //Verificar se determinados campos foram preenchidos.
+            //Repita esta estrutura de IF / ELSE IF para as informações obrigatórias.
+            if (txtNome.Text == string.Empty)
+            {
+                MessageBox.Show("Campo Nome obrigatório!", "Aviso",
+                MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                //Apontar o ponteiro do mouse para o campo
+                txtNome.Focus();
+                //Parar a execução do programa até esta linha
+                return;
+            }
+            else if (txtn.Text == string.Empty)
+            {
+                MessageBox.Show("Campo Número obrigatório!", "Aviso",
+                MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                txtn.Focus();
+                return;
+            }
+            //Armazenar as informações do formulário
+            clientes.codigo = Convert.ToInt32(txtCodigo.Text);
+            clientes.nome = txtNome.Text;
+            clientes.cep = mtxCep.Text;
+            clientes.email = txtEmail.Text;
+            clientes.endereco = txtEndereco.Text;
+            clientes.n = Convert.ToInt32(txtn.Text);
+            clientes.bairro = txtBairro.Text;
+            clientes.cidade = txtCidade.Text;
+            clientes.uf = txtUF.Text;
+            clientes.telefone = mtxTelefone.Text;
+            clientes.complemento = txtComplemento.Text;
+            if (rdoF.Checked == true)
+            {
+                clientes.sexo = "Feminino";
+            }
+            if(rdoM.Checked == true)
+            {
+                clientes.sexo = "Masculino";
+            }
+            else
+            {
+                clientes.sexo = txtOutros.Text;
+            }
+            //Utilização do método AtualizarDados com os dados do cliente como parâmetro
+            atualizarDados.AtualizarCliente(clientes);
+            //Atualizar e configurar o DataGridView após atualização
+            CarregarGrid();
+            ConfiguraDataGridView();
+            MessageBox.Show(clientes.mensagem, "Aviso",
+            MessageBoxButtons.OK, MessageBoxIcon.Information);
+        }
     }
 }

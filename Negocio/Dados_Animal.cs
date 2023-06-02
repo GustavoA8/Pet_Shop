@@ -26,7 +26,7 @@ namespace Negocio
             public string Pedigree { get; set; }
             public string Sexo { get; set; }
             public string Observacao { get; set; }
-            public string mensagem { get; set; }
+            public string mensagem { get; set; } 
         
     }
 

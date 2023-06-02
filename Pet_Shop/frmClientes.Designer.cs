@@ -65,8 +65,10 @@ namespace Pet_Shop
             this.lblPesquisar = new System.Windows.Forms.Label();
             this.txtPesquisar = new System.Windows.Forms.TextBox();
             this.grpCadastro = new System.Windows.Forms.GroupBox();
+            this.btnEditar = new System.Windows.Forms.Button();
             this.grpListaCliente = new System.Windows.Forms.GroupBox();
             ((System.ComponentModel.ISupportInitialize)(this.dgvListaClientes)).BeginInit();
+            this.grpCadastro.SuspendLayout();
             this.SuspendLayout();
             // 
             // label1
@@ -402,6 +404,7 @@ namespace Pet_Shop
             this.dgvListaClientes.Name = "dgvListaClientes";
             this.dgvListaClientes.Size = new System.Drawing.Size(535, 259);
             this.dgvListaClientes.TabIndex = 32;
+            this.dgvListaClientes.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvListaClientes_CellClick);
             // 
             // lblPesquisar
             // 
@@ -422,6 +425,7 @@ namespace Pet_Shop
             // 
             // grpCadastro
             // 
+            this.grpCadastro.Controls.Add(this.btnEditar);
             this.grpCadastro.Location = new System.Drawing.Point(12, 2);
             this.grpCadastro.Name = "grpCadastro";
             this.grpCadastro.Size = new System.Drawing.Size(559, 354);
@@ -429,6 +433,16 @@ namespace Pet_Shop
             this.grpCadastro.TabStop = false;
             this.grpCadastro.Text = "Cadastro";
             this.grpCadastro.Enter += new System.EventHandler(this.grpCadastro_Enter);
+            // 
+            // btnEditar
+            // 
+            this.btnEditar.Location = new System.Drawing.Point(462, 19);
+            this.btnEditar.Name = "btnEditar";
+            this.btnEditar.Size = new System.Drawing.Size(75, 23);
+            this.btnEditar.TabIndex = 0;
+            this.btnEditar.Text = "Editar";
+            this.btnEditar.UseVisualStyleBackColor = true;
+            this.btnEditar.Click += new System.EventHandler(this.btnEditar_Click);
             // 
             // grpListaCliente
             // 
@@ -487,6 +501,7 @@ namespace Pet_Shop
             this.Text = "Form1";
             this.Load += new System.EventHandler(this.frmClientes_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvListaClientes)).EndInit();
+            this.grpCadastro.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -530,6 +545,7 @@ namespace Pet_Shop
         private System.Windows.Forms.TextBox txtPesquisar;
         private System.Windows.Forms.GroupBox grpCadastro;
         private System.Windows.Forms.GroupBox grpListaCliente;
+        private System.Windows.Forms.Button btnEditar;
     }
 }
 

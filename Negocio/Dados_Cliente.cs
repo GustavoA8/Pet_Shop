@@ -11,6 +11,7 @@ namespace Negocio
 {
     public class Dados_Cliente
     {
+        public int codigo { get; set; }
         public string nome { get; set; }
         public string cep { get; set; }
         public string email { get; set; }
@@ -136,6 +137,55 @@ namespace Negocio
                 erro.Message.ToString();
             }
             return tabela;
+        }
+       
+    }
+    public class AtualizarDados
+    {
+        public void AtualizarCliente(Dados_Cliente dados)
+        {
+            try
+            {
+                string sql = "UPDATE tb_cliente SET cliente_nome=@Nome, " +
+               "cliente_cep=@Cep, cliente_email=@Email, cliente_endereco=@Endereco, cliente_n=@N, cliente_bairro=@Bairro, cliente_cidade=@Cidade, cliente_Uf=@Uf, cliente_telefone=@Telefone, cliente_complemento=@Complemento, cliente_sexo=@Sexo " +
+               "WHERE id_cliente=@Codigo";
+          
+                MySqlCommand cmd = new MySqlCommand(sql, Conexao.obterConexao());
+                //Tipo de comando: Text ou Procedure
+                cmd.CommandType = CommandType.Text;
+                //Parâmetros que serão substiruídos
+                cmd.Parameters.Add(new MySqlParameter("@Nome", dados.nome));
+                cmd.Parameters.Add(new MySqlParameter("@Cep", dados.cep));
+                cmd.Parameters.Add(new MySqlParameter("@Email", dados.email));
+                cmd.Parameters.Add(new MySqlParameter("@Endereco", dados.endereco));
+                cmd.Parameters.Add(new MySqlParameter("@N", dados.n));
+                cmd.Parameters.Add(new MySqlParameter("@Bairro", dados.bairro));
+                cmd.Parameters.Add(new MySqlParameter("@Cidade", dados.cidade));
+                cmd.Parameters.Add(new MySqlParameter("@Uf", dados.uf));
+                cmd.Parameters.Add(new MySqlParameter("@Telefone", dados.telefone));
+                cmd.Parameters.Add(new MySqlParameter("@Complemento", dados.complemento));
+                cmd.Parameters.Add(new MySqlParameter("@Sexo", dados.sexo));
+                cmd.Parameters.Add(new MySqlParameter("@Codigo", dados.codigo));
+                int registrosAtualizados = cmd.ExecuteNonQuery();
+
+                if( registrosAtualizados >= 1)
+                {
+                    dados.mensagem = "Sucesso ao atualizar o registro!";
+                    
+                }
+                else
+                {
+                    dados.mensagem = "Falha ao atualizar o registro!";
+                }
+                Conexao.fecharConexao();
+
+
+            }
+            catch (Exception erro)
+            {
+                dados.mensagem = "ERRO - AtualizarClientes - AtualizarDados - " +
+                erro.Message.ToString();
+            }
         }
     }
 }
