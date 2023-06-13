@@ -67,6 +67,7 @@ namespace Pet_Shop
             this.grpCadastro = new System.Windows.Forms.GroupBox();
             this.btnEditar = new System.Windows.Forms.Button();
             this.grpListaCliente = new System.Windows.Forms.GroupBox();
+            this.cboteste = new System.Windows.Forms.ComboBox();
             ((System.ComponentModel.ISupportInitialize)(this.dgvListaClientes)).BeginInit();
             this.grpCadastro.SuspendLayout();
             this.SuspendLayout();
@@ -425,6 +426,7 @@ namespace Pet_Shop
             // 
             // grpCadastro
             // 
+            this.grpCadastro.Controls.Add(this.cboteste);
             this.grpCadastro.Controls.Add(this.btnEditar);
             this.grpCadastro.Location = new System.Drawing.Point(12, 2);
             this.grpCadastro.Name = "grpCadastro";
@@ -452,6 +454,14 @@ namespace Pet_Shop
             this.grpListaCliente.TabIndex = 36;
             this.grpListaCliente.TabStop = false;
             this.grpListaCliente.Text = "Lista de Clientes";
+            // 
+            // cboteste
+            // 
+            this.cboteste.FormattingEnabled = true;
+            this.cboteste.Location = new System.Drawing.Point(209, 22);
+            this.cboteste.Name = "cboteste";
+            this.cboteste.Size = new System.Drawing.Size(240, 24);
+            this.cboteste.TabIndex = 1;
             // 
             // frmClientes
             // 
@@ -546,6 +556,7 @@ namespace Pet_Shop
         private System.Windows.Forms.GroupBox grpCadastro;
         private System.Windows.Forms.GroupBox grpListaCliente;
         private System.Windows.Forms.Button btnEditar;
+        private System.Windows.Forms.ComboBox cboteste;
     }
 }
 

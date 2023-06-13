@@ -88,6 +88,7 @@
     <Compile Include="Dados_Animal.cs" />
     <Compile Include="Dados_Cliente.cs" />
     <Compile Include="Dados_TesteConcexao.cs" />
+    <Compile Include="Dados_Produto.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
