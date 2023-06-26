@@ -16,7 +16,7 @@ namespace Pet_Shop
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new frmCompra());
+            Application.Run(new frmCCliente());
         }
     }
 }

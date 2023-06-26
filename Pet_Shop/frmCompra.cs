@@ -27,12 +27,14 @@ namespace Pet_Shop
                 produto.codigo = Convert.ToInt32(txtID.Text);
                 produto.nome = txtProduto.Text;
                 produto.registro = dtpRegistro.Value;
-                produto.preco = "R$" + txtPreco.Text;
+                produto.preco = txtPreco.Text;
                 produto.quantidade = Convert.ToInt32(nmrQtde.Value);
                 produto.validade = dtpValidade.Value;
                 produto.fornecedor = txtFornecedor.Text;
             salvarCompra.InserirDados(produto);
-                LimparCampos();
+            MessageBox.Show(produto.msg);
+            CarregarGrid();
+            LimparCampos();
             
         }
         private void LimparCampos()

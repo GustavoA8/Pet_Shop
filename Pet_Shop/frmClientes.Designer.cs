@@ -65,9 +65,10 @@ namespace Pet_Shop
             this.lblPesquisar = new System.Windows.Forms.Label();
             this.txtPesquisar = new System.Windows.Forms.TextBox();
             this.grpCadastro = new System.Windows.Forms.GroupBox();
+            this.btnDeletar = new System.Windows.Forms.Button();
+            this.cboteste = new System.Windows.Forms.ComboBox();
             this.btnEditar = new System.Windows.Forms.Button();
             this.grpListaCliente = new System.Windows.Forms.GroupBox();
-            this.cboteste = new System.Windows.Forms.ComboBox();
             ((System.ComponentModel.ISupportInitialize)(this.dgvListaClientes)).BeginInit();
             this.grpCadastro.SuspendLayout();
             this.SuspendLayout();
@@ -368,7 +369,7 @@ namespace Pet_Shop
             // 
             // btnLimpar
             // 
-            this.btnLimpar.Location = new System.Drawing.Point(255, 315);
+            this.btnLimpar.Location = new System.Drawing.Point(147, 313);
             this.btnLimpar.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.btnLimpar.Name = "btnLimpar";
             this.btnLimpar.Size = new System.Drawing.Size(87, 28);
@@ -406,6 +407,7 @@ namespace Pet_Shop
             this.dgvListaClientes.Size = new System.Drawing.Size(535, 259);
             this.dgvListaClientes.TabIndex = 32;
             this.dgvListaClientes.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvListaClientes_CellClick);
+            this.dgvListaClientes.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvListaClientes_CellContentClick);
             // 
             // lblPesquisar
             // 
@@ -426,8 +428,10 @@ namespace Pet_Shop
             // 
             // grpCadastro
             // 
+            this.grpCadastro.Controls.Add(this.btnDeletar);
             this.grpCadastro.Controls.Add(this.cboteste);
             this.grpCadastro.Controls.Add(this.btnEditar);
+            this.grpCadastro.Controls.Add(this.btnLimpar);
             this.grpCadastro.Location = new System.Drawing.Point(12, 2);
             this.grpCadastro.Name = "grpCadastro";
             this.grpCadastro.Size = new System.Drawing.Size(559, 354);
@@ -435,6 +439,24 @@ namespace Pet_Shop
             this.grpCadastro.TabStop = false;
             this.grpCadastro.Text = "Cadastro";
             this.grpCadastro.Enter += new System.EventHandler(this.grpCadastro_Enter);
+            // 
+            // btnDeletar
+            // 
+            this.btnDeletar.Location = new System.Drawing.Point(314, 313);
+            this.btnDeletar.Name = "btnDeletar";
+            this.btnDeletar.Size = new System.Drawing.Size(75, 28);
+            this.btnDeletar.TabIndex = 2;
+            this.btnDeletar.Text = "Deletar";
+            this.btnDeletar.UseVisualStyleBackColor = true;
+            this.btnDeletar.Click += new System.EventHandler(this.btnDeletar_Click);
+            // 
+            // cboteste
+            // 
+            this.cboteste.FormattingEnabled = true;
+            this.cboteste.Location = new System.Drawing.Point(209, 22);
+            this.cboteste.Name = "cboteste";
+            this.cboteste.Size = new System.Drawing.Size(240, 24);
+            this.cboteste.TabIndex = 1;
             // 
             // btnEditar
             // 
@@ -455,14 +477,6 @@ namespace Pet_Shop
             this.grpListaCliente.TabStop = false;
             this.grpListaCliente.Text = "Lista de Clientes";
             // 
-            // cboteste
-            // 
-            this.cboteste.FormattingEnabled = true;
-            this.cboteste.Location = new System.Drawing.Point(209, 22);
-            this.cboteste.Name = "cboteste";
-            this.cboteste.Size = new System.Drawing.Size(240, 24);
-            this.cboteste.TabIndex = 1;
-            // 
             // frmClientes
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 16F);
@@ -473,7 +487,6 @@ namespace Pet_Shop
             this.Controls.Add(this.dgvListaClientes);
             this.Controls.Add(this.btnBuscar);
             this.Controls.Add(this.btnSair);
-            this.Controls.Add(this.btnLimpar);
             this.Controls.Add(this.btnSalvar);
             this.Controls.Add(this.txtOutros);
             this.Controls.Add(this.rdoB);
@@ -557,6 +570,7 @@ namespace Pet_Shop
         private System.Windows.Forms.GroupBox grpListaCliente;
         private System.Windows.Forms.Button btnEditar;
         private System.Windows.Forms.ComboBox cboteste;
+        private System.Windows.Forms.Button btnDeletar;
     }
 }
 

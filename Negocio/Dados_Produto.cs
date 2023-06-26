@@ -63,12 +63,11 @@ namespace PetMarket
             try
             {
 
-                string sql = "INSERT INTO tb_fornecedor (for_id_pdt, for_nome, for_fornecedor, for_dataval, for_qtde, for_preco, for_registro) " +
-                    "VALUES (@idpdt ,@nome, @fornecedor, @validade, @qtde, @preco, @registro)";
+                string sql = "INSERT INTO tb_fornecedor (for_id_pdt, for_fornecedor, for_dataval, for_qtde, for_preco, for_registro) " +
+                    "VALUES (@idpdt, @fornecedor, @validade, @qtde, @preco, @registro)";
                 MySqlCommand cmd = new MySqlCommand(sql, Conexao.obterConexao());
                 cmd.CommandType = CommandType.Text;
                 cmd.Parameters.Add(new MySqlParameter("@idpdt", dados.codigo));
-                cmd.Parameters.Add(new MySqlParameter("@nome", dados.nome));
                 cmd.Parameters.Add(new MySqlParameter("@fornecedor", dados.fornecedor));
                 cmd.Parameters.Add(new MySqlParameter("@validade", dados.validade));
                 cmd.Parameters.Add(new MySqlParameter("@qtde", dados.quantidade));
@@ -89,6 +88,39 @@ namespace PetMarket
             {
 
                 dados.msg = "ERRO - SalvarCompra - InserirDados -" + erro.ErrorCode + erro.Message;
+            }
+        }
+    }
+    public class SalvarVenda
+    {
+        public void inserirDados(Dados_Produto dados)
+        {
+            try
+            {
+
+                string sql = "INSERT INTO tb_venda (ven_id_pdt, ven_qtde, ven_preco, ven_validade) " +
+                    "VALUES (@idpdt, @qtde, @preco, @validade)";
+                MySqlCommand cmd = new MySqlCommand(sql, Conexao.obterConexao());
+                cmd.CommandType = CommandType.Text;
+                cmd.Parameters.Add(new MySqlParameter("@idpdt", dados.codigo));
+                cmd.Parameters.Add(new MySqlParameter("@validade", dados.validade));
+                cmd.Parameters.Add(new MySqlParameter("@qtde", dados.quantidade));
+                cmd.Parameters.Add(new MySqlParameter("@preco", dados.preco));
+
+                int registrosInseridos = cmd.ExecuteNonQuery();
+                if (registrosInseridos >= 1)
+                {
+                    dados.msg = "Registro da venda inserido com Sucesso!";
+                }
+                else
+                {
+                    dados.msg = "Falha ao inserir a venda no registro!";
+                }
+            }
+            catch (MySqlException erro)
+            {
+
+                dados.msg = "ERRO - SalvarVenda - InserirDados -" + erro.ErrorCode + erro.Message;
             }
         }
     }

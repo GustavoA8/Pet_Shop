@@ -188,5 +188,42 @@ namespace Negocio
             }
         }
     }
+    public class ExcluirClientes
+    {
+        public void DeletarDados(Dados_Cliente dados)
+        {
+            try
+            {
+                //Comando Delete para o BD
+                string sql = "DELETE FROM tb_cliente WHERE ClCodigo=@codigo";
+                //Variável que receberá o resultado da Conexão e Delete
+                MySqlCommand cmd = new MySqlCommand(sql, Conexao.obterConexao());
+                //Declarar o tipo de comando: Text ou Procedure
+                cmd.CommandType = CommandType.Text;
+                //Parâmetros que serão substituídos
+                cmd.Parameters.Add(new MySqlParameter("@codigo", dados.codigo));
+                //Execução do comando
+                int registrosDeletados = cmd.ExecuteNonQuery();
+                //Verificação da exclusão do registros
+                if (registrosDeletados >= 1)
+                {
+                    dados.mensagem = "Registro deletado com Sucesso!";
+                }
+                else
+                {
+                    dados.mensagem = "Falha ao deletar o registro!";
+                }
+                Conexao.fecharConexao();
+
+            }
+            catch (MySqlException erro)
+            {
+
+                dados.mensagem = "ERRO - DeletarClientes - DeletarDdos" + erro.Message;
+                erro.Message.ToString();
+            }
+        }
+        
+    }
 }
 

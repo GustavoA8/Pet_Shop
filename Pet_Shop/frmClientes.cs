@@ -34,6 +34,7 @@ namespace Pet_Shop
             rdoF.Checked = false;
             rdoM.Checked = false;
             rdoB.Checked = false;
+            btnDeletar.Visible = true;
             txtOutros.Clear();
         }
 
@@ -57,7 +58,7 @@ namespace Pet_Shop
         private void btnSalvar_Click(object sender, EventArgs e)
         {
             Dados_Cliente cliente = new Dados_Cliente();
-            
+
             cliente.nome = txtNome.Text;
             cliente.cep = mtxCep.Text;
             cliente.email = txtEmail.Text;
@@ -292,7 +293,7 @@ namespace Pet_Shop
             //Evitar o erro no clique dos títulos (linha -1)
             if (e.RowIndex >= 0)
             {
-                
+
                 //TextBox = DataGridView.LinhaSelecionada.Célula[Posição].Valor.ParaTexto
                 txtCodigo.Text = dgvListaClientes.Rows[e.RowIndex].Cells[0].Value.ToString();
                 txtNome.Text = dgvListaClientes.Rows[e.RowIndex].Cells[1].Value.ToString();
@@ -320,6 +321,8 @@ namespace Pet_Shop
                 }
                 btnEditar.Visible = true; //Ou enable
                 btnSalvar.Enabled = false;
+                btnDeletar.Visible = true;
+
             }
 
         }
@@ -363,7 +366,7 @@ namespace Pet_Shop
             {
                 clientes.sexo = "Feminino";
             }
-            if(rdoM.Checked == true)
+            if (rdoM.Checked == true)
             {
                 clientes.sexo = "Masculino";
             }
@@ -378,6 +381,33 @@ namespace Pet_Shop
             ConfiguraDataGridView();
             MessageBox.Show(clientes.mensagem, "Aviso",
             MessageBoxButtons.OK, MessageBoxIcon.Information);
+        }
+
+        private void btnDeletar_Click(object sender, EventArgs e)
+        {
+            ExcluirClientes excluirClientes = new ExcluirClientes();
+            //Instanciar a Classe ClientesDTO - Atributos/Variáveis
+            Dados_Cliente clientes = new Dados_Cliente();
+            //Armazenar o código para exclusão
+            clientes.codigo = Convert.ToInt32(txtCodigo.Text);
+            //Confirmação para exclusão do registro
+            DialogResult confirmacao = MessageBox.Show("Deseja deletar o registro? Código " +
+            txtCodigo.Text, "Aviso", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            if (confirmacao == DialogResult.Yes)
+            {
+                //Executar o método de exclusão
+                excluirClientes.DeletarDados(clientes);
+                CarregarGrid();
+                ConfiguraDataGridView();
+                Limpar();
+                MessageBox.Show(clientes.mensagem, "Aviso", MessageBoxButtons.OK,
+                MessageBoxIcon.Information);
+            }
+        }
+
+        private void dgvListaClientes_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
         }
     }
 }

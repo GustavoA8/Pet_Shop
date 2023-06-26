@@ -392,6 +392,7 @@ namespace Pet_Shop
             this.Controls.Add(this.grpDados);
             this.Name = "frmAnimais";
             this.Text = "frmAnimais";
+            this.Load += new System.EventHandler(this.frmAnimais_Load);
             this.grpDados.ResumeLayout(false);
             this.grpDados.PerformLayout();
             this.ResumeLayout(false);

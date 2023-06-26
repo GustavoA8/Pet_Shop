@@ -104,5 +104,10 @@ namespace Pet_Shop
                 Application.Exit();
             } 
         }
+
+        private void frmAnimais_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

@@ -29,28 +29,29 @@ namespace Pet_Shop
         /// </summary>
         private void InitializeComponent()
         {
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.cboProduto = new System.Windows.Forms.ComboBox();
             this.txtPreco = new System.Windows.Forms.TextBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.numericUpDown1 = new System.Windows.Forms.NumericUpDown();
+            this.nudQtde = new System.Windows.Forms.NumericUpDown();
             this.lblProduto = new System.Windows.Forms.Label();
             this.lblPreco = new System.Windows.Forms.Label();
             this.lblValidade = new System.Windows.Forms.Label();
             this.lblQtde = new System.Windows.Forms.Label();
             this.lblTitulo = new System.Windows.Forms.Label();
             this.dgvListaProduto = new System.Windows.Forms.DataGridView();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
+            this.btnVender = new System.Windows.Forms.Button();
+            this.dtpValidade = new System.Windows.Forms.DateTimePicker();
+            ((System.ComponentModel.ISupportInitialize)(this.nudQtde)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvListaProduto)).BeginInit();
             this.SuspendLayout();
             // 
-            // comboBox1
+            // cboProduto
             // 
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(50, 158);
-            this.comboBox1.Margin = new System.Windows.Forms.Padding(4);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(180, 26);
-            this.comboBox1.TabIndex = 0;
+            this.cboProduto.FormattingEnabled = true;
+            this.cboProduto.Location = new System.Drawing.Point(50, 158);
+            this.cboProduto.Margin = new System.Windows.Forms.Padding(4);
+            this.cboProduto.Name = "cboProduto";
+            this.cboProduto.Size = new System.Drawing.Size(180, 26);
+            this.cboProduto.TabIndex = 0;
             // 
             // txtPreco
             // 
@@ -60,21 +61,13 @@ namespace Pet_Shop
             this.txtPreco.Size = new System.Drawing.Size(148, 26);
             this.txtPreco.TabIndex = 1;
             // 
-            // textBox2
+            // nudQtde
             // 
-            this.textBox2.Location = new System.Drawing.Point(600, 159);
-            this.textBox2.Margin = new System.Windows.Forms.Padding(4);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(148, 26);
-            this.textBox2.TabIndex = 2;
-            // 
-            // numericUpDown1
-            // 
-            this.numericUpDown1.Location = new System.Drawing.Point(876, 158);
-            this.numericUpDown1.Margin = new System.Windows.Forms.Padding(4);
-            this.numericUpDown1.Name = "numericUpDown1";
-            this.numericUpDown1.Size = new System.Drawing.Size(93, 26);
-            this.numericUpDown1.TabIndex = 3;
+            this.nudQtde.Location = new System.Drawing.Point(876, 158);
+            this.nudQtde.Margin = new System.Windows.Forms.Padding(4);
+            this.nudQtde.Name = "nudQtde";
+            this.nudQtde.Size = new System.Drawing.Size(93, 26);
+            this.nudQtde.TabIndex = 3;
             // 
             // lblProduto
             // 
@@ -133,26 +126,46 @@ namespace Pet_Shop
             this.dgvListaProduto.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvListaProduto_CellClick);
             this.dgvListaProduto.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
             // 
+            // btnVender
+            // 
+            this.btnVender.Location = new System.Drawing.Point(1031, 158);
+            this.btnVender.Name = "btnVender";
+            this.btnVender.Size = new System.Drawing.Size(87, 27);
+            this.btnVender.TabIndex = 10;
+            this.btnVender.Text = "Vender";
+            this.btnVender.UseVisualStyleBackColor = true;
+            this.btnVender.Click += new System.EventHandler(this.btnVender_Click);
+            // 
+            // dtpValidade
+            // 
+            this.dtpValidade.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dtpValidade.Location = new System.Drawing.Point(600, 158);
+            this.dtpValidade.Name = "dtpValidade";
+            this.dtpValidade.Size = new System.Drawing.Size(145, 26);
+            this.dtpValidade.TabIndex = 11;
+            // 
             // frmCCliente
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 18F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1200, 523);
+            this.Controls.Add(this.dtpValidade);
+            this.Controls.Add(this.btnVender);
             this.Controls.Add(this.dgvListaProduto);
             this.Controls.Add(this.lblTitulo);
             this.Controls.Add(this.lblQtde);
             this.Controls.Add(this.lblValidade);
             this.Controls.Add(this.lblPreco);
             this.Controls.Add(this.lblProduto);
-            this.Controls.Add(this.numericUpDown1);
-            this.Controls.Add(this.textBox2);
+            this.Controls.Add(this.nudQtde);
             this.Controls.Add(this.txtPreco);
-            this.Controls.Add(this.comboBox1);
+            this.Controls.Add(this.cboProduto);
             this.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "frmCCliente";
             this.Text = "frmCCliente";
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).EndInit();
+            this.Load += new System.EventHandler(this.frmCCliente_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.nudQtde)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvListaProduto)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -161,15 +174,16 @@ namespace Pet_Shop
 
         #endregion
 
-        private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.ComboBox cboProduto;
         private System.Windows.Forms.TextBox txtPreco;
-        private System.Windows.Forms.TextBox textBox2;
-        private System.Windows.Forms.NumericUpDown numericUpDown1;
+        private System.Windows.Forms.NumericUpDown nudQtde;
         private System.Windows.Forms.Label lblProduto;
         private System.Windows.Forms.Label lblPreco;
         private System.Windows.Forms.Label lblValidade;
         private System.Windows.Forms.Label lblQtde;
         private System.Windows.Forms.Label lblTitulo;
         private System.Windows.Forms.DataGridView dgvListaProduto;
+        private System.Windows.Forms.Button btnVender;
+        private System.Windows.Forms.DateTimePicker dtpValidade;
     }
 }
