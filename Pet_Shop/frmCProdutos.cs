@@ -22,6 +22,7 @@ namespace Pet_Shop
         {
             Dados_Produto produto = new Dados_Produto();
             SalvarProduto salvarProduto = new SalvarProduto();
+            SalvarEstoque salvarEstoque = new SalvarEstoque();
             if (txtNome.Text != null && cboTipo.Text != null && txtMarca.Text != null)
             {
                 produto.nome = txtNome.Text;
@@ -30,6 +31,10 @@ namespace Pet_Shop
                 produto.registro = dtpRegistro.Value;
                 MessageBox.Show("Produto cadastrado com sucesso!", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 salvarProduto.InserirDados(produto);
+                salvarEstoque.BuscarCodigo(produto);
+                salvarEstoque.InserirDados(produto);
+                MessageBox.Show(produto.msg);
+                
                 LimparCampos();
             }
             else

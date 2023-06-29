@@ -32,6 +32,7 @@ namespace Pet_Shop
                 produto.validade = dtpValidade.Value;
                 produto.fornecedor = txtFornecedor.Text;
             salvarCompra.InserirDados(produto);
+            salvarCompra.CEstoque(produto);
             MessageBox.Show(produto.msg);
             CarregarGrid();
             LimparCampos();

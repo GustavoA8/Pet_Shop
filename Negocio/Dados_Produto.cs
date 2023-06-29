@@ -56,6 +56,64 @@ namespace PetMarket
         }
         
     }
+    public class SalvarEstoque
+    {
+        public void InserirDados(Dados_Produto dados)
+        {
+            try
+            {
+                string sql = "INSERT INTO tb_estoque (est_qtde, est_id_pdt) " +
+                    "VALUES (@qtde, @codigo)";
+                MySqlCommand cmd = new MySqlCommand(sql, Conexao.obterConexao());
+                cmd.CommandType = CommandType.Text;
+                cmd.Parameters.Add(new MySqlParameter("@qtde", dados.quantidade));
+                cmd.Parameters.Add(new MySqlParameter("@codigo", dados.codigo));
+                int registrosInseridos = cmd.ExecuteNonQuery();
+                if (registrosInseridos >= 1)
+                {
+                    dados.msg = "Registro do produto inserido com Sucesso!";
+                }
+                else
+                {
+                    dados.msg = "Falha ao inserir o produto no registro!";
+                }
+            }
+            catch (MySqlException erro)
+            {
+
+                dados.msg = "ERRO - SalvarProduto - InserirDados -" + erro.ErrorCode + erro.Message;
+            }
+        }
+        public void BuscarCodigo(Dados_Produto dados)
+        {
+            try
+            {
+                string sql = "SELECT id_pdt FROM tb_produto  ORDER BY id_pdt DESC LIMIT 1";
+                MySqlCommand cmd = new MySqlCommand(sql, Conexao.obterConexao());
+                //Define o tipo de comando
+                cmd.CommandType = CommandType.Text;
+                //Realiza a leitura dos dados - Reader
+                //Ignora os títulos da tabela
+                MySqlDataReader dr = cmd.ExecuteReader();
+                //Verifica se há linhas nesta leitura de dados
+                if (dr.HasRows)
+                {
+                    //Enquanto houver dados
+                    while (dr.Read())
+                    {
+                        dados.codigo = dr.GetInt32(0);
+                    }//11 + 1 = 12
+                }
+                Conexao.fecharConexao();
+
+            }
+            catch (MySqlException erro)
+            {
+
+                dados.msg = "ERRO - PegarCodigo - InserirDados -" + erro.ErrorCode + erro.Message;
+            }
+        }
+    }
     public class SalvarCompra
     {
         public void InserirDados(Dados_Produto dados)
@@ -90,6 +148,64 @@ namespace PetMarket
                 dados.msg = "ERRO - SalvarCompra - InserirDados -" + erro.ErrorCode + erro.Message;
             }
         }
+        public void CEstoque(Dados_Produto dados)
+        {
+            int qtde = new int();
+            try
+            {
+                string sql = "SELECT est_qtde FROM tb_estoque WHERE est_id_pdt=@codigo";
+                MySqlCommand cmd = new MySqlCommand(sql, Conexao.obterConexao());
+                //Define o tipo de comando
+                cmd.CommandType = CommandType.Text;
+                cmd.Parameters.Add(new MySqlParameter("@codigo", dados.codigo));
+                //Realiza a leitura dos dados - Reader
+                //Ignora os títulos da tabela
+                MySqlDataReader dr = cmd.ExecuteReader();
+                //Verifica se há linhas nesta leitura de dados
+                if (dr.HasRows)
+                {
+                    //Enquanto houver dados
+                    while (dr.Read())
+                    {
+                        qtde = dr.GetInt32(0);
+                        dados.quantidade += qtde;
+                    }//11 + 1 = 12
+                }
+                Conexao.fecharConexao();
+
+            }
+            catch (MySqlException erro)
+            {
+
+                dados.msg = "ERRO - PegarCodigo - InserirDados -" + erro.ErrorCode + erro.Message;
+            }
+
+            try
+            {
+                string sql = "UPDATE tb_estoque SET est_qtde=@qtde WHERE est_id_pdt=@codigo";
+                MySqlCommand cmd = new MySqlCommand(sql, Conexao.obterConexao());
+                cmd.CommandType = CommandType.Text;
+                cmd.Parameters.Add(new MySqlParameter("@qtde", dados.quantidade));
+                cmd.Parameters.Add(new MySqlParameter("@codigo", dados.codigo));
+                int registrosAtualizados = cmd.ExecuteNonQuery();
+                //Verifica se algum registro foi atualizado
+                if (registrosAtualizados >= 1)
+                {
+                    dados.msg = "Sucesso ao atualizar o registro!";
+                }
+                else
+                {
+                    dados.msg = "Falha ao atualizar o registro!";
+                }
+                Conexao.fecharConexao();
+
+            }
+            catch (MySqlException erro)
+            {
+                dados.msg = "ERRO - SalvarCompra - CEstoque -" + erro.ErrorCode + erro.Message;
+            }
+          
+        }
     }
     public class SalvarVenda
     {
@@ -123,6 +239,62 @@ namespace PetMarket
                 dados.msg = "ERRO - SalvarVenda - InserirDados -" + erro.ErrorCode + erro.Message;
             }
         }
+        public void VEstoque(Dados_Produto dados)
+        {
+            int qtde = new int();
+            try
+            {
+                string sql = "SELECT est_qtde FROM tb_estoque WHERE est_id_pdt=@codigo";
+                MySqlCommand cmd = new MySqlCommand(sql, Conexao.obterConexao());
+                //Define o tipo de comando
+                cmd.CommandType = CommandType.Text;
+                cmd.Parameters.Add(new MySqlParameter("@codigo", dados.codigo));
+                //Realiza a leitura dos dados - Reader
+                //Ignora os títulos da tabela
+                MySqlDataReader dr = cmd.ExecuteReader();
+                //Verifica se há linhas nesta leitura de dados
+                if (dr.HasRows)
+                {
+                    //Enquanto houver dados
+                    while (dr.Read())
+                    {
+                        qtde = dr.GetInt32(0);
+                        dados.quantidade -= qtde;
+                    }//11 + 1 = 12
+                }
+                Conexao.fecharConexao();
+            }
+            catch (MySqlException erro)
+            {
+                dados.msg = "ERRO - SalvarCompra - VEstoque -" + erro.ErrorCode + erro.Message;
+            }
+                try
+                {
+                    string sql = "UPDATE tb_estoque SET est_qtde=@qtde WHERE est_id_pdt=@codigo";
+                    MySqlCommand cmd = new MySqlCommand(sql, Conexao.obterConexao());
+                    cmd.CommandType = CommandType.Text;
+                    cmd.Parameters.Add(new MySqlParameter("@qtde", dados.quantidade));
+                    cmd.Parameters.Add(new MySqlParameter("@codigo", dados.codigo));
+                    int registrosAtualizados = cmd.ExecuteNonQuery();
+                    //Verifica se algum registro foi atualizado
+                    if (registrosAtualizados >= 1)
+                    {
+                        dados.msg = "Sucesso ao atualizar o registro!";
+                    }
+                    else
+                    {
+                        dados.msg = "Falha ao atualizar o registro!";
+                    }
+                    Conexao.fecharConexao();
+
+                }
+                catch (MySqlException erro)
+                {
+                    dados.msg = "ERRO - SalvarCompra - CEstoque -" + erro.ErrorCode + erro.Message;
+                }
+
+        }
+        
     }
     public class ConsultarProduto
     {

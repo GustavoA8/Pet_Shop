@@ -41,5 +41,26 @@ namespace Pet_Shop
         {
 
         }
+
+        private void fornecedorToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmCompra formfilho = new frmCompra();
+            formfilho.MdiParent = this;
+            formfilho.Show();
+        }
+
+        private void produtoToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmCProdutos formfilho = new frmCProdutos();
+            formfilho.MdiParent = this;
+            formfilho.Show();
+        }
+
+        private void vendaToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmCCliente formfilho = new frmCCliente();
+            formfilho.MdiParent = this;
+            formfilho.Show();
+        }
     }
 }

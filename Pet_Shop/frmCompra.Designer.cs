@@ -54,7 +54,7 @@ namespace Pet_Shop
             // 
             this.lblTitulo.AutoSize = true;
             this.lblTitulo.Font = new System.Drawing.Font("Arial", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblTitulo.Location = new System.Drawing.Point(198, 28);
+            this.lblTitulo.Location = new System.Drawing.Point(168, 28);
             this.lblTitulo.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblTitulo.Name = "lblTitulo";
             this.lblTitulo.Size = new System.Drawing.Size(167, 32);
@@ -193,7 +193,7 @@ namespace Pet_Shop
             this.dgvListarProduto.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvListarProduto.Location = new System.Drawing.Point(24, 380);
             this.dgvListarProduto.Name = "dgvListarProduto";
-            this.dgvListarProduto.Size = new System.Drawing.Size(786, 226);
+            this.dgvListarProduto.Size = new System.Drawing.Size(497, 226);
             this.dgvListarProduto.TabIndex = 22;
             this.dgvListarProduto.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvListarProduto_CellClick);
             this.dgvListarProduto.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
@@ -202,7 +202,7 @@ namespace Pet_Shop
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 18F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(832, 618);
+            this.ClientSize = new System.Drawing.Size(539, 618);
             this.Controls.Add(this.dgvListarProduto);
             this.Controls.Add(this.dtpValidade);
             this.Controls.Add(this.btnSalvar);

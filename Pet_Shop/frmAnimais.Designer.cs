@@ -54,7 +54,6 @@ namespace Pet_Shop
             this.lblFuncionario = new System.Windows.Forms.Label();
             this.txtFuncionario = new System.Windows.Forms.TextBox();
             this.lblCodigoDono = new System.Windows.Forms.Label();
-            this.txtCodigoDono = new System.Windows.Forms.TextBox();
             this.lblNomePet = new System.Windows.Forms.Label();
             this.txtNomePet = new System.Windows.Forms.TextBox();
             this.lblCodigoPet = new System.Windows.Forms.Label();
@@ -62,11 +61,21 @@ namespace Pet_Shop
             this.btnSalvar = new System.Windows.Forms.Button();
             this.btnLimpar = new System.Windows.Forms.Button();
             this.btnFechar = new System.Windows.Forms.Button();
+            this.dgvListaAnimais = new System.Windows.Forms.DataGridView();
+            this.lblPesquisa = new System.Windows.Forms.Label();
+            this.txtPesquisa = new System.Windows.Forms.TextBox();
+            this.lblPesquisaDono = new System.Windows.Forms.Label();
+            this.txtPesquisaDono = new System.Windows.Forms.TextBox();
+            this.btnEditar = new System.Windows.Forms.Button();
+            this.btnDeletar = new System.Windows.Forms.Button();
+            this.cboCodigoDono = new System.Windows.Forms.ComboBox();
             this.grpDados.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvListaAnimais)).BeginInit();
             this.SuspendLayout();
             // 
             // grpDados
             // 
+            this.grpDados.Controls.Add(this.cboCodigoDono);
             this.grpDados.Controls.Add(this.lblIdade);
             this.grpDados.Controls.Add(this.txtIdade);
             this.grpDados.Controls.Add(this.txtObservacao);
@@ -91,14 +100,13 @@ namespace Pet_Shop
             this.grpDados.Controls.Add(this.lblFuncionario);
             this.grpDados.Controls.Add(this.txtFuncionario);
             this.grpDados.Controls.Add(this.lblCodigoDono);
-            this.grpDados.Controls.Add(this.txtCodigoDono);
             this.grpDados.Controls.Add(this.lblNomePet);
             this.grpDados.Controls.Add(this.txtNomePet);
             this.grpDados.Controls.Add(this.lblCodigoPet);
             this.grpDados.Controls.Add(this.txtCodigo);
-            this.grpDados.Location = new System.Drawing.Point(81, 71);
+            this.grpDados.Location = new System.Drawing.Point(12, 22);
             this.grpDados.Name = "grpDados";
-            this.grpDados.Size = new System.Drawing.Size(867, 415);
+            this.grpDados.Size = new System.Drawing.Size(858, 350);
             this.grpDados.TabIndex = 3;
             this.grpDados.TabStop = false;
             this.grpDados.Text = "Dados do Animal";
@@ -125,7 +133,7 @@ namespace Pet_Shop
             this.txtObservacao.Location = new System.Drawing.Point(52, 269);
             this.txtObservacao.Multiline = true;
             this.txtObservacao.Name = "txtObservacao";
-            this.txtObservacao.Size = new System.Drawing.Size(760, 107);
+            this.txtObservacao.Size = new System.Drawing.Size(760, 54);
             this.txtObservacao.TabIndex = 28;
             // 
             // lblObsevacao
@@ -311,13 +319,6 @@ namespace Pet_Shop
             this.lblCodigoDono.TabIndex = 5;
             this.lblCodigoDono.Text = "Código do Dono:";
             // 
-            // txtCodigoDono
-            // 
-            this.txtCodigoDono.Location = new System.Drawing.Point(456, 77);
-            this.txtCodigoDono.Name = "txtCodigoDono";
-            this.txtCodigoDono.Size = new System.Drawing.Size(147, 20);
-            this.txtCodigoDono.TabIndex = 4;
-            // 
             // lblNomePet
             // 
             this.lblNomePet.AutoSize = true;
@@ -353,7 +354,7 @@ namespace Pet_Shop
             // 
             // btnSalvar
             // 
-            this.btnSalvar.Location = new System.Drawing.Point(121, 505);
+            this.btnSalvar.Location = new System.Drawing.Point(55, 378);
             this.btnSalvar.Name = "btnSalvar";
             this.btnSalvar.Size = new System.Drawing.Size(75, 23);
             this.btnSalvar.TabIndex = 4;
@@ -363,7 +364,7 @@ namespace Pet_Shop
             // 
             // btnLimpar
             // 
-            this.btnLimpar.Location = new System.Drawing.Point(390, 504);
+            this.btnLimpar.Location = new System.Drawing.Point(419, 378);
             this.btnLimpar.Name = "btnLimpar";
             this.btnLimpar.Size = new System.Drawing.Size(75, 23);
             this.btnLimpar.TabIndex = 5;
@@ -373,7 +374,7 @@ namespace Pet_Shop
             // 
             // btnFechar
             // 
-            this.btnFechar.Location = new System.Drawing.Point(646, 522);
+            this.btnFechar.Location = new System.Drawing.Point(795, 378);
             this.btnFechar.Name = "btnFechar";
             this.btnFechar.Size = new System.Drawing.Size(75, 23);
             this.btnFechar.TabIndex = 6;
@@ -381,11 +382,89 @@ namespace Pet_Shop
             this.btnFechar.UseVisualStyleBackColor = true;
             this.btnFechar.Click += new System.EventHandler(this.btnFechar_Click);
             // 
+            // dgvListaAnimais
+            // 
+            this.dgvListaAnimais.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvListaAnimais.Location = new System.Drawing.Point(12, 453);
+            this.dgvListaAnimais.Name = "dgvListaAnimais";
+            this.dgvListaAnimais.Size = new System.Drawing.Size(858, 161);
+            this.dgvListaAnimais.TabIndex = 7;
+            this.dgvListaAnimais.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvListaAnimais_CellClick);
+            // 
+            // lblPesquisa
+            // 
+            this.lblPesquisa.AutoSize = true;
+            this.lblPesquisa.Location = new System.Drawing.Point(35, 426);
+            this.lblPesquisa.Name = "lblPesquisa";
+            this.lblPesquisa.Size = new System.Drawing.Size(72, 13);
+            this.lblPesquisa.TabIndex = 8;
+            this.lblPesquisa.Text = "Pesquisa Pet:";
+            // 
+            // txtPesquisa
+            // 
+            this.txtPesquisa.Location = new System.Drawing.Point(110, 423);
+            this.txtPesquisa.Name = "txtPesquisa";
+            this.txtPesquisa.Size = new System.Drawing.Size(100, 20);
+            this.txtPesquisa.TabIndex = 9;
+            this.txtPesquisa.TextChanged += new System.EventHandler(this.txtPesquisa_TextChanged);
+            // 
+            // lblPesquisaDono
+            // 
+            this.lblPesquisaDono.AutoSize = true;
+            this.lblPesquisaDono.Location = new System.Drawing.Point(220, 426);
+            this.lblPesquisaDono.Name = "lblPesquisaDono";
+            this.lblPesquisaDono.Size = new System.Drawing.Size(82, 13);
+            this.lblPesquisaDono.TabIndex = 10;
+            this.lblPesquisaDono.Text = "Pesquisa Dono:";
+            // 
+            // txtPesquisaDono
+            // 
+            this.txtPesquisaDono.Location = new System.Drawing.Point(308, 423);
+            this.txtPesquisaDono.Name = "txtPesquisaDono";
+            this.txtPesquisaDono.Size = new System.Drawing.Size(100, 20);
+            this.txtPesquisaDono.TabIndex = 11;
+            this.txtPesquisaDono.TextChanged += new System.EventHandler(this.txtPesquisaDono_TextChanged);
+            // 
+            // btnEditar
+            // 
+            this.btnEditar.Location = new System.Drawing.Point(414, 423);
+            this.btnEditar.Name = "btnEditar";
+            this.btnEditar.Size = new System.Drawing.Size(75, 21);
+            this.btnEditar.TabIndex = 12;
+            this.btnEditar.Text = "Editar";
+            this.btnEditar.UseVisualStyleBackColor = true;
+            this.btnEditar.Click += new System.EventHandler(this.btnEditar_Click);
+            // 
+            // btnDeletar
+            // 
+            this.btnDeletar.Location = new System.Drawing.Point(495, 423);
+            this.btnDeletar.Name = "btnDeletar";
+            this.btnDeletar.Size = new System.Drawing.Size(75, 20);
+            this.btnDeletar.TabIndex = 13;
+            this.btnDeletar.Text = "Deletar";
+            this.btnDeletar.UseVisualStyleBackColor = true;
+            this.btnDeletar.Click += new System.EventHandler(this.btnDeletar_Click);
+            // 
+            // cboCodigoDono
+            // 
+            this.cboCodigoDono.FormattingEnabled = true;
+            this.cboCodigoDono.Location = new System.Drawing.Point(456, 77);
+            this.cboCodigoDono.Name = "cboCodigoDono";
+            this.cboCodigoDono.Size = new System.Drawing.Size(121, 21);
+            this.cboCodigoDono.TabIndex = 31;
+            // 
             // frmAnimais
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1029, 557);
+            this.ClientSize = new System.Drawing.Size(889, 656);
+            this.Controls.Add(this.btnDeletar);
+            this.Controls.Add(this.btnEditar);
+            this.Controls.Add(this.txtPesquisaDono);
+            this.Controls.Add(this.lblPesquisaDono);
+            this.Controls.Add(this.txtPesquisa);
+            this.Controls.Add(this.lblPesquisa);
+            this.Controls.Add(this.dgvListaAnimais);
             this.Controls.Add(this.btnFechar);
             this.Controls.Add(this.btnLimpar);
             this.Controls.Add(this.btnSalvar);
@@ -395,7 +474,9 @@ namespace Pet_Shop
             this.Load += new System.EventHandler(this.frmAnimais_Load);
             this.grpDados.ResumeLayout(false);
             this.grpDados.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvListaAnimais)).EndInit();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -426,7 +507,6 @@ namespace Pet_Shop
         private System.Windows.Forms.Label lblFuncionario;
         private System.Windows.Forms.TextBox txtFuncionario;
         private System.Windows.Forms.Label lblCodigoDono;
-        private System.Windows.Forms.TextBox txtCodigoDono;
         private System.Windows.Forms.Label lblNomePet;
         private System.Windows.Forms.TextBox txtNomePet;
         private System.Windows.Forms.Label lblCodigoPet;
@@ -434,5 +514,13 @@ namespace Pet_Shop
         private System.Windows.Forms.Button btnSalvar;
         private System.Windows.Forms.Button btnLimpar;
         private System.Windows.Forms.Button btnFechar;
+        private System.Windows.Forms.DataGridView dgvListaAnimais;
+        private System.Windows.Forms.Label lblPesquisa;
+        private System.Windows.Forms.TextBox txtPesquisa;
+        private System.Windows.Forms.Label lblPesquisaDono;
+        private System.Windows.Forms.TextBox txtPesquisaDono;
+        private System.Windows.Forms.Button btnEditar;
+        private System.Windows.Forms.Button btnDeletar;
+        private System.Windows.Forms.ComboBox cboCodigoDono;
     }
 }
