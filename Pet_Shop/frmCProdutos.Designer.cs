@@ -43,6 +43,9 @@ namespace Pet_Shop
             this.btnFechar = new System.Windows.Forms.Button();
             this.cboTipo = new System.Windows.Forms.ComboBox();
             this.dtpRegistro = new System.Windows.Forms.DateTimePicker();
+            this.dgvListarProduto = new System.Windows.Forms.DataGridView();
+            this.lblProdutos = new System.Windows.Forms.Label();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvListarProduto)).BeginInit();
             this.SuspendLayout();
             // 
             // txtID
@@ -121,7 +124,7 @@ namespace Pet_Shop
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Arial", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(56, 18);
+            this.label1.Location = new System.Drawing.Point(48, 15);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(264, 29);
             this.label1.TabIndex = 14;
@@ -178,11 +181,31 @@ namespace Pet_Shop
             this.dtpRegistro.Size = new System.Drawing.Size(103, 26);
             this.dtpRegistro.TabIndex = 19;
             // 
+            // dgvListarProduto
+            // 
+            this.dgvListarProduto.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvListarProduto.Location = new System.Drawing.Point(385, 77);
+            this.dgvListarProduto.Name = "dgvListarProduto";
+            this.dgvListarProduto.Size = new System.Drawing.Size(458, 250);
+            this.dgvListarProduto.TabIndex = 20;
+            // 
+            // lblProdutos
+            // 
+            this.lblProdutos.AutoSize = true;
+            this.lblProdutos.Font = new System.Drawing.Font("Arial", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblProdutos.Location = new System.Drawing.Point(491, 15);
+            this.lblProdutos.Name = "lblProdutos";
+            this.lblProdutos.Size = new System.Drawing.Size(257, 29);
+            this.lblProdutos.TabIndex = 21;
+            this.lblProdutos.Text = "Produtos Cadastrado";
+            // 
             // frmCProdutos
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 18F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(381, 353);
+            this.ClientSize = new System.Drawing.Size(866, 353);
+            this.Controls.Add(this.lblProdutos);
+            this.Controls.Add(this.dgvListarProduto);
             this.Controls.Add(this.dtpRegistro);
             this.Controls.Add(this.cboTipo);
             this.Controls.Add(this.btnFechar);
@@ -201,6 +224,8 @@ namespace Pet_Shop
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "frmCProdutos";
             this.Text = "frmCProdutos";
+            this.Load += new System.EventHandler(this.frmCProdutos_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.dgvListarProduto)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -222,5 +247,7 @@ namespace Pet_Shop
         private System.Windows.Forms.Button btnFechar;
         private System.Windows.Forms.ComboBox cboTipo;
         private System.Windows.Forms.DateTimePicker dtpRegistro;
+        private System.Windows.Forms.DataGridView dgvListarProduto;
+        private System.Windows.Forms.Label lblProdutos;
     }
 }

@@ -53,5 +53,25 @@ namespace Pet_Shop
             txtMarca.Clear();
             cboTipo.SelectedIndex = -1;
         }
+
+        private void frmCProdutos_Load(object sender, EventArgs e)
+        {
+            CarregarGrid();
+        }
+
+        private void CarregarGrid()
+        {
+            ConsultarProduto consultarProduto = new ConsultarProduto();
+            Dados_Produto produto = new Dados_Produto();
+
+            dgvListarProduto.DataSource = consultarProduto.ListarDados(produto);
+        }
+        private void ConfiguraDataGridView()
+        {
+            if (dgvListarProduto.Rows.Count != 0)
+            {
+                dgvListarProduto.Columns[0].HeaderText = "Nome";
+            }
+        }
     }
 }

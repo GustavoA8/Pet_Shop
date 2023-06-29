@@ -21,7 +21,7 @@ namespace Pet_Shop
         private void btnIniciar_Click(object sender, EventArgs e)
         {
             //Instância das Classes
-            dados = new LoginDTO();
+            Dados_Login login = new Dados_Login ();
             AcessoLogin acessoLogin = new AcessoLogin();
             //Armazenar Login e Senha do formulário
             login.usuario = txtUsuario.Text;
@@ -31,14 +31,14 @@ namespace Pet_Shop
             //Verificar se o status é Logado = 1
             if (login.logado == 1)
             {
-                MessageBox.Show(login.mensagem, "Aviso");
+                MessageBox.Show(login.msg, "Aviso");
                 //Fechar Formulário de Login se usuário e senha estiverem corretos
                 Close();
             }
             else
             {
-                MessageBox.Show(login.mensagem, "Aviso");
-                textusuario.Clear();
+                MessageBox.Show(login.msg, "Aviso");
+                txtUsuario.Clear();
                 txtSenha.Clear();
                 txtUsuario.Focus();
             }

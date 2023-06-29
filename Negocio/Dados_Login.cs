@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace Negocio
 {
-    class Dados_Login
+    public class Dados_Login
     {
         public int codigo { get; set; }
         public string usuario { get; set; }
