@@ -43,5 +43,10 @@ namespace Pet_Shop
                 txtUsuario.Focus();
             }
         }
+
+        private void frmLogin_Load(object sender, EventArgs e)
+        {
+            
+        }
     }
 }

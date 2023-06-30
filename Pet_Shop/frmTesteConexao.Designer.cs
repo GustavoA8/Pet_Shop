@@ -38,7 +38,7 @@ namespace Pet_Shop
             // lblTeste
             // 
             this.lblTeste.AutoSize = true;
-            this.lblTeste.Location = new System.Drawing.Point(56, 38);
+            this.lblTeste.Location = new System.Drawing.Point(688, 299);
             this.lblTeste.Margin = new System.Windows.Forms.Padding(8, 0, 8, 0);
             this.lblTeste.Name = "lblTeste";
             this.lblTeste.Size = new System.Drawing.Size(460, 27);
@@ -48,7 +48,7 @@ namespace Pet_Shop
             // lblMensagem
             // 
             this.lblMensagem.AutoSize = true;
-            this.lblMensagem.Location = new System.Drawing.Point(235, 107);
+            this.lblMensagem.Location = new System.Drawing.Point(867, 368);
             this.lblMensagem.Margin = new System.Windows.Forms.Padding(8, 0, 8, 0);
             this.lblMensagem.Name = "lblMensagem";
             this.lblMensagem.Size = new System.Drawing.Size(77, 27);
@@ -57,7 +57,7 @@ namespace Pet_Shop
             // 
             // btnTestar
             // 
-            this.btnTestar.Location = new System.Drawing.Point(48, 229);
+            this.btnTestar.Location = new System.Drawing.Point(680, 490);
             this.btnTestar.Margin = new System.Windows.Forms.Padding(8, 6, 8, 6);
             this.btnTestar.Name = "btnTestar";
             this.btnTestar.Size = new System.Drawing.Size(176, 48);
@@ -68,7 +68,7 @@ namespace Pet_Shop
             // 
             // btnSair
             // 
-            this.btnSair.Location = new System.Drawing.Point(348, 229);
+            this.btnSair.Location = new System.Drawing.Point(980, 490);
             this.btnSair.Margin = new System.Windows.Forms.Padding(8, 6, 8, 6);
             this.btnSair.Name = "btnSair";
             this.btnSair.Size = new System.Drawing.Size(176, 48);
@@ -80,7 +80,7 @@ namespace Pet_Shop
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(14F, 27F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(581, 355);
+            this.ClientSize = new System.Drawing.Size(1306, 676);
             this.Controls.Add(this.btnSair);
             this.Controls.Add(this.btnTestar);
             this.Controls.Add(this.lblMensagem);

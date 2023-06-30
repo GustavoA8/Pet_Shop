@@ -121,6 +121,12 @@
     <Compile Include="frmCProdutos.Designer.cs">
       <DependentUpon>frmCProdutos.cs</DependentUpon>
     </Compile>
+    <Compile Include="frmHistorico.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmHistorico.Designer.cs">
+      <DependentUpon>frmHistorico.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmLogin.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -156,6 +162,9 @@
     <EmbeddedResource Include="frmCProdutos.resx">
       <DependentUpon>frmCProdutos.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="frmHistorico.resx">
+      <DependentUpon>frmHistorico.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="frmLogin.resx">
       <DependentUpon>frmLogin.cs</DependentUpon>
     </EmbeddedResource>
@@ -173,6 +182,7 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
@@ -197,6 +207,15 @@
       <Project>{0D63E425-6ED3-4562-812D-4014AD08A661}</Project>
       <Name>Negocio</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\c246034dac7aa19b85409ef6000c63c2.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\012-017_notas_291-11.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\e35010ed444ca8cc86a003498b4dec3a.jpg" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

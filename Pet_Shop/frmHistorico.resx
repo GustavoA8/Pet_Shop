@@ -117,14 +117,4 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="c246034dac7aa19b85409ef6000c63c2" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\c246034dac7aa19b85409ef6000c63c2.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="012-017_notas_291-11" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\012-017_notas_291-11.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="e35010ed444ca8cc86a003498b4dec3a" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\e35010ed444ca8cc86a003498b4dec3a.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
 </root>

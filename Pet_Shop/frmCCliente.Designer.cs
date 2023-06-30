@@ -47,7 +47,7 @@ namespace Pet_Shop
             // cboProduto
             // 
             this.cboProduto.FormattingEnabled = true;
-            this.cboProduto.Location = new System.Drawing.Point(50, 158);
+            this.cboProduto.Location = new System.Drawing.Point(403, 303);
             this.cboProduto.Margin = new System.Windows.Forms.Padding(4);
             this.cboProduto.Name = "cboProduto";
             this.cboProduto.Size = new System.Drawing.Size(180, 26);
@@ -55,7 +55,7 @@ namespace Pet_Shop
             // 
             // txtPreco
             // 
-            this.txtPreco.Location = new System.Drawing.Point(345, 158);
+            this.txtPreco.Location = new System.Drawing.Point(698, 303);
             this.txtPreco.Margin = new System.Windows.Forms.Padding(4);
             this.txtPreco.Name = "txtPreco";
             this.txtPreco.Size = new System.Drawing.Size(148, 26);
@@ -63,7 +63,7 @@ namespace Pet_Shop
             // 
             // nudQtde
             // 
-            this.nudQtde.Location = new System.Drawing.Point(876, 158);
+            this.nudQtde.Location = new System.Drawing.Point(1229, 303);
             this.nudQtde.Margin = new System.Windows.Forms.Padding(4);
             this.nudQtde.Name = "nudQtde";
             this.nudQtde.Size = new System.Drawing.Size(93, 26);
@@ -72,7 +72,7 @@ namespace Pet_Shop
             // lblProduto
             // 
             this.lblProduto.AutoSize = true;
-            this.lblProduto.Location = new System.Drawing.Point(47, 136);
+            this.lblProduto.Location = new System.Drawing.Point(400, 281);
             this.lblProduto.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblProduto.Name = "lblProduto";
             this.lblProduto.Size = new System.Drawing.Size(63, 18);
@@ -82,7 +82,7 @@ namespace Pet_Shop
             // lblPreco
             // 
             this.lblPreco.AutoSize = true;
-            this.lblPreco.Location = new System.Drawing.Point(345, 138);
+            this.lblPreco.Location = new System.Drawing.Point(698, 283);
             this.lblPreco.Name = "lblPreco";
             this.lblPreco.Size = new System.Drawing.Size(50, 18);
             this.lblPreco.TabIndex = 5;
@@ -91,7 +91,7 @@ namespace Pet_Shop
             // lblValidade
             // 
             this.lblValidade.AutoSize = true;
-            this.lblValidade.Location = new System.Drawing.Point(597, 138);
+            this.lblValidade.Location = new System.Drawing.Point(950, 283);
             this.lblValidade.Name = "lblValidade";
             this.lblValidade.Size = new System.Drawing.Size(70, 18);
             this.lblValidade.TabIndex = 6;
@@ -100,7 +100,7 @@ namespace Pet_Shop
             // lblQtde
             // 
             this.lblQtde.AutoSize = true;
-            this.lblQtde.Location = new System.Drawing.Point(873, 136);
+            this.lblQtde.Location = new System.Drawing.Point(1226, 281);
             this.lblQtde.Name = "lblQtde";
             this.lblQtde.Size = new System.Drawing.Size(42, 18);
             this.lblQtde.TabIndex = 7;
@@ -110,7 +110,7 @@ namespace Pet_Shop
             // 
             this.lblTitulo.AutoSize = true;
             this.lblTitulo.Font = new System.Drawing.Font("Arial", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblTitulo.Location = new System.Drawing.Point(493, 38);
+            this.lblTitulo.Location = new System.Drawing.Point(846, 183);
             this.lblTitulo.Name = "lblTitulo";
             this.lblTitulo.Size = new System.Drawing.Size(96, 32);
             this.lblTitulo.TabIndex = 8;
@@ -119,7 +119,7 @@ namespace Pet_Shop
             // dgvListaProduto
             // 
             this.dgvListaProduto.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvListaProduto.Location = new System.Drawing.Point(50, 239);
+            this.dgvListaProduto.Location = new System.Drawing.Point(403, 384);
             this.dgvListaProduto.Name = "dgvListaProduto";
             this.dgvListaProduto.Size = new System.Drawing.Size(1079, 272);
             this.dgvListaProduto.TabIndex = 9;
@@ -128,18 +128,17 @@ namespace Pet_Shop
             // 
             // btnVender
             // 
-            this.btnVender.Location = new System.Drawing.Point(1031, 158);
+            this.btnVender.Location = new System.Drawing.Point(1384, 303);
             this.btnVender.Name = "btnVender";
             this.btnVender.Size = new System.Drawing.Size(87, 27);
             this.btnVender.TabIndex = 10;
             this.btnVender.Text = "Vender";
             this.btnVender.UseVisualStyleBackColor = true;
-            this.btnVender.Click += new System.EventHandler(this.btnVender_Click);
             // 
             // dtpValidade
             // 
             this.dtpValidade.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dtpValidade.Location = new System.Drawing.Point(600, 158);
+            this.dtpValidade.Location = new System.Drawing.Point(953, 303);
             this.dtpValidade.Name = "dtpValidade";
             this.dtpValidade.Size = new System.Drawing.Size(145, 26);
             this.dtpValidade.TabIndex = 11;
@@ -148,7 +147,7 @@ namespace Pet_Shop
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 18F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1200, 523);
+            this.ClientSize = new System.Drawing.Size(1277, 665);
             this.Controls.Add(this.dtpValidade);
             this.Controls.Add(this.btnVender);
             this.Controls.Add(this.dgvListaProduto);
@@ -164,7 +163,6 @@ namespace Pet_Shop
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "frmCCliente";
             this.Text = "frmCCliente";
-            this.Load += new System.EventHandler(this.frmCCliente_Load);
             ((System.ComponentModel.ISupportInitialize)(this.nudQtde)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvListaProduto)).EndInit();
             this.ResumeLayout(false);

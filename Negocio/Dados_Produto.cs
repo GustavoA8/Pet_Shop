@@ -21,6 +21,8 @@ namespace PetMarket
         public string preco { get; set; }
         public string msg { set; get; }
         public string fornecedor { get; set; }
+        public Boolean situacao { get; set; }
+        public int produto { get; set; }
 
     }
 
@@ -209,6 +211,36 @@ namespace PetMarket
     }
     public class SalvarVenda
     {
+        public void VerificarQtde(Dados_Produto dados)
+        {
+            try
+            {
+                string sql = "SELECT est_qtde FROM tb_estoque WHERE est_id_pdt=@codigo";
+                MySqlCommand cmd = new MySqlCommand(sql, Conexao.obterConexao());
+                cmd.CommandType = CommandType.Text;
+                cmd.Parameters.Add(new MySqlParameter("@codigo", dados.codigo));
+
+                MySqlDataReader dr = cmd.ExecuteReader();
+                if (dr.HasRows)
+                {
+                    while (dr.Read())
+                    {
+                        if (dr.GetInt32(0) < dados.quantidade)
+                        {
+                            dados.situacao = false;
+                        }
+                        else
+                        {
+                            dados.situacao = true;
+                        }
+                    }
+                }
+            }
+            catch(MySqlException erro)
+            {
+                dados.msg = "ERRO - SalvarVenda - VerificarQtde -" + erro.ErrorCode + erro.Message;
+            }
+        }
         public void inserirDados(Dados_Produto dados)
         {
             try
@@ -352,5 +384,220 @@ namespace PetMarket
             return tabela;
         }
 
+    }
+    public class AtualizarProduto
+    {
+        public void AtualizarDados(Dados_Produto dados)
+        {
+            try
+            {
+                //String com o comando de atualização
+                string sql = "UPDATE tb_produto SET " +
+                "pdt_nome=@nome,pdt_tipo=@tipo,pdt_marca=@marca," +
+                "pdt_registro=@registro" +
+                " WHERE id_pdt=@codigo";
+                //Uso da abertura de Conexão e da string sql
+                MySqlCommand cmd = new MySqlCommand(sql, Conexao.obterConexao());
+                //Tipo de comando: Text ou Stored Procedure
+                cmd.CommandType = CommandType.Text;
+                //Parâmetros que serão substituídos (@) por variáveis
+                cmd.Parameters.Add(new MySqlParameter("@codigo", dados.codigo));
+                cmd.Parameters.Add(new MySqlParameter("@nome", dados.nome));
+                cmd.Parameters.Add(new MySqlParameter("@tipo", dados.tipo));
+                cmd.Parameters.Add(new MySqlParameter("@marca", dados.marca));
+                cmd.Parameters.Add(new MySqlParameter("@registro", dados.registro));
+                int registrosAtualizados = cmd.ExecuteNonQuery();
+                //Verifica se algum registro foi atualizado
+                if (registrosAtualizados >= 1)
+                {
+                    dados.msg = "Sucesso ao atualizar o registro!";
+                }
+                else
+                {
+                    dados.msg = "Falha ao atualizar o registro!";
+                }
+                Conexao.fecharConexao();
+            }
+
+            catch (MySqlException erro)
+            {
+                dados.msg = "ERRO - AtualizarProduto - AtualizarDados - " +
+                erro.Message.ToString();
+            }
+        }
+    }
+    public class ConsultarVenda
+    {
+        public DataTable ListarVenda(Dados_Produto dados)
+        {
+            //Declaração da variável que receberá os dados no formato de tabela.
+            DataTable tabela = new DataTable();
+            try
+            {
+                //Intrução de comando SELECT para o BD
+                string sql = "SELECT * FROM tb_venda";
+                //Comando para o SELECT e a Conexão - MySqlCommand
+                MySqlCommand cmd = new MySqlCommand(sql, Conexao.obterConexao());
+                //Adaptar os dados do BD para o formato de tabela
+                //com a execução da Conexão e SELECT
+                MySqlDataAdapter adaptador = new MySqlDataAdapter(cmd);
+                //Preenchimento da variável em formato de tabela - Fill = preencher
+                adaptador.Fill(tabela);
+                //Fechar a conexão
+                Conexao.fecharConexao();
+            }
+            catch (MySqlException erro)
+            {
+                dados.msg = "Erro - ConsultarVenda - ListarVenda " +
+                erro.Message.ToString();
+            }
+            //O comando SELECT sempre precisa retornar algum dado
+            //Este retorno será no formato de tabela, sendo aplicado ao DataGridView
+            return tabela;
+        }
+    }
+    public class AtualizarVenda
+    {
+        public void AtualizarDados(Dados_Produto dados)
+        {
+            try
+            {
+                //String com o comando de atualização
+                string sql = "UPDATE tb_venda SET " +
+                "ven_id_pdt=@produto,ven_preco=@preco,ven_validade=@validade," +
+                "pdt_registro=@registro" +
+                " WHERE id_pdt=@codigo";
+                //Uso da abertura de Conexão e da string sql
+                MySqlCommand cmd = new MySqlCommand(sql, Conexao.obterConexao());
+                //Tipo de comando: Text ou Stored Procedure
+                cmd.CommandType = CommandType.Text;
+                //Parâmetros que serão substituídos (@) por variáveis
+                cmd.Parameters.Add(new MySqlParameter("@codigo", dados.codigo));
+                cmd.Parameters.Add(new MySqlParameter("@nome", dados.nome));
+                cmd.Parameters.Add(new MySqlParameter("@tipo", dados.tipo));
+                cmd.Parameters.Add(new MySqlParameter("@marca", dados.marca));
+                cmd.Parameters.Add(new MySqlParameter("@registro", dados.registro));
+                int registrosAtualizados = cmd.ExecuteNonQuery();
+                //Verifica se algum registro foi atualizado
+                if (registrosAtualizados >= 1)
+                {
+                    dados.msg = "Sucesso ao atualizar o registro!";
+                }
+                else
+                {
+                    dados.msg = "Falha ao atualizar o registro!";
+                }
+                Conexao.fecharConexao();
+            }
+
+            catch (MySqlException erro)
+            {
+                dados.msg = "ERRO - AtualizarProduto - AtualizarDados - " +
+                erro.Message.ToString();
+            }
+        }
+    }
+    
+    public class ConsultarCompra
+    {
+        public DataTable ListarCompra(Dados_Produto dados)
+        {
+            //Declaração da variável que receberá os dados no formato de tabela.
+            DataTable tabela = new DataTable();
+            try
+            {
+                //Intrução de comando SELECT para o BD
+                string sql = "SELECT * FROM tb_fornecedor";
+                //Comando para o SELECT e a Conexão - MySqlCommand
+                MySqlCommand cmd = new MySqlCommand(sql, Conexao.obterConexao());
+                //Adaptar os dados do BD para o formato de tabela
+                //com a execução da Conexão e SELECT
+                MySqlDataAdapter adaptador = new MySqlDataAdapter(cmd);
+                //Preenchimento da variável em formato de tabela - Fill = preencher
+                adaptador.Fill(tabela);
+                //Fechar a conexão
+                Conexao.fecharConexao();
+            }
+            catch (MySqlException erro)
+            {
+                dados.msg = "Erro - ConsultarCompra - ListarCompra " +
+                erro.Message.ToString();
+            }
+            //O comando SELECT sempre precisa retornar algum dado
+            //Este retorno será no formato de tabela, sendo aplicado ao DataGridView
+            return tabela;
+
+        }
+    }
+    public class AtualizarCompra
+    {
+        public void AtualizarDados(Dados_Produto dados)
+        {
+            try
+            {
+                //String com o comando de atualização
+                string sql = "UPDATE tb_fornecedor SET " +
+                "for_fornecedor=@fornecedor,for_dataval=@validade,for_qtde=@qtde," +
+                "for_preco=@preco,for_registro=@registro,for_id_pdt=@produto" +
+                " WHERE for_id=@codigo";
+                //Uso da abertura de Conexão e da string sql
+                MySqlCommand cmd = new MySqlCommand(sql, Conexao.obterConexao());
+                //Tipo de comando: Text ou Stored Procedure
+                cmd.CommandType = CommandType.Text;
+                //Parâmetros que serão substituídos (@) por variáveis
+                cmd.Parameters.Add(new MySqlParameter("@codigo", dados.codigo));
+                cmd.Parameters.Add(new MySqlParameter("@fornecedor", dados.fornecedor));
+                cmd.Parameters.Add(new MySqlParameter("@validade", dados.validade));
+                cmd.Parameters.Add(new MySqlParameter("@qtde", dados.quantidade));
+                cmd.Parameters.Add(new MySqlParameter("@preco", dados.preco));
+                cmd.Parameters.Add(new MySqlParameter("@registro", dados.registro));
+                cmd.Parameters.Add(new MySqlParameter("@produto", dados.produto));
+                int registrosAtualizados = cmd.ExecuteNonQuery();
+                //Verifica se algum registro foi atualizado
+                if (registrosAtualizados >= 1)
+                {
+                    dados.msg = "Sucesso ao atualizar o registro!";
+                }
+                else
+                {
+                    dados.msg = "Falha ao atualizar o registro!";
+                }
+                Conexao.fecharConexao();
+            }
+            
+             catch (MySqlException erro)
+            {
+                dados.msg = "ERRO - AtualizarCompra - AtualizarDados - " +
+                erro.Message.ToString();
+            }
+
+        }
+    }
+    public class DeletarCompra
+    {
+        public void DeletarDados(Dados_Produto dados)
+        {
+            //Comando Delete para o BD
+            string sql = "DELETE FROM tb_fornecedor WHERE for_id=@codigo";
+            //Variável que receberá o resultado da Conexão e Delete
+            MySqlCommand cmd = new MySqlCommand(sql, Conexao.obterConexao());
+            //Declarar o tipo de comando: Text ou Procedure
+            cmd.CommandType = CommandType.Text;
+            //Parâmetros que serão substituídos
+            cmd.Parameters.Add(new MySqlParameter("@codigo", dados.codigo));
+            //Execução do comando
+            int registrosDeletados = cmd.ExecuteNonQuery();
+            //Verificação da exclusão do registros
+            if (registrosDeletados >= 1)
+            {
+                dados.msg = "Registro deletado com Sucesso!";
+            }
+            else
+            {
+                dados.msg = "Falha ao deletar o registro!";
+            }
+            Conexao.fecharConexao();
+
+        }
     }
 }

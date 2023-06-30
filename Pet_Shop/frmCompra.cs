@@ -98,5 +98,13 @@ namespace Pet_Shop
                 
             }
         }
+
+        private void btnHistorico_Click(object sender, EventArgs e)
+        {
+            frmHistorico tela = new frmHistorico();
+            tela.Show();
+            
+
+        }
     }
 }

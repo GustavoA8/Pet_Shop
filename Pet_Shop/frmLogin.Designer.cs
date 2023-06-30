@@ -41,7 +41,7 @@ namespace Pet_Shop
             // 
             this.lblLogin.AutoSize = true;
             this.lblLogin.Font = new System.Drawing.Font("Arial", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblLogin.Location = new System.Drawing.Point(110, 12);
+            this.lblLogin.Location = new System.Drawing.Point(640, 249);
             this.lblLogin.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblLogin.Name = "lblLogin";
             this.lblLogin.Size = new System.Drawing.Size(63, 22);
@@ -51,7 +51,7 @@ namespace Pet_Shop
             // lblSenha
             // 
             this.lblSenha.AutoSize = true;
-            this.lblSenha.Location = new System.Drawing.Point(12, 128);
+            this.lblSenha.Location = new System.Drawing.Point(542, 365);
             this.lblSenha.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblSenha.Name = "lblSenha";
             this.lblSenha.Size = new System.Drawing.Size(50, 17);
@@ -61,7 +61,7 @@ namespace Pet_Shop
             // lblUsuario
             // 
             this.lblUsuario.AutoSize = true;
-            this.lblUsuario.Location = new System.Drawing.Point(12, 67);
+            this.lblUsuario.Location = new System.Drawing.Point(542, 304);
             this.lblUsuario.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblUsuario.Name = "lblUsuario";
             this.lblUsuario.Size = new System.Drawing.Size(58, 17);
@@ -70,7 +70,7 @@ namespace Pet_Shop
             // 
             // txtUsuario
             // 
-            this.txtUsuario.Location = new System.Drawing.Point(79, 64);
+            this.txtUsuario.Location = new System.Drawing.Point(609, 301);
             this.txtUsuario.Margin = new System.Windows.Forms.Padding(4);
             this.txtUsuario.Name = "txtUsuario";
             this.txtUsuario.Size = new System.Drawing.Size(132, 25);
@@ -78,7 +78,7 @@ namespace Pet_Shop
             // 
             // txtSenha
             // 
-            this.txtSenha.Location = new System.Drawing.Point(79, 125);
+            this.txtSenha.Location = new System.Drawing.Point(609, 362);
             this.txtSenha.Margin = new System.Windows.Forms.Padding(4);
             this.txtSenha.Name = "txtSenha";
             this.txtSenha.Size = new System.Drawing.Size(132, 25);
@@ -86,7 +86,7 @@ namespace Pet_Shop
             // 
             // btnIniciar
             // 
-            this.btnIniciar.Location = new System.Drawing.Point(92, 180);
+            this.btnIniciar.Location = new System.Drawing.Point(622, 417);
             this.btnIniciar.Margin = new System.Windows.Forms.Padding(4);
             this.btnIniciar.Name = "btnIniciar";
             this.btnIniciar.Size = new System.Drawing.Size(100, 30);
@@ -99,7 +99,7 @@ namespace Pet_Shop
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(265, 259);
+            this.ClientSize = new System.Drawing.Size(1259, 660);
             this.Controls.Add(this.btnIniciar);
             this.Controls.Add(this.txtSenha);
             this.Controls.Add(this.txtUsuario);
@@ -110,6 +110,8 @@ namespace Pet_Shop
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "frmLogin";
             this.Text = "frmLogin";
+            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
+            this.Load += new System.EventHandler(this.frmLogin_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
