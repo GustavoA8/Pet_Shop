@@ -32,6 +32,7 @@ namespace Pet_Shop
 
             dgvListaProduto.DataSource = consultarVenda.ListarVenda(produto);
             ConfigurarDataGridView();
+           //MessageBox.Show(produto.msg);
         }
 
         private void ConfigurarDataGridView()
@@ -58,73 +59,97 @@ namespace Pet_Shop
             if (e.RowIndex >= 0)
             {
                 //TextBox = DataGridView.LinhaSelecionada.Célula[Posição].Valor.ParaTexto
-                cboProduto.DisplayMember = dgvListaProduto.Rows[e.RowIndex].Cells[0].Value.ToString();
-                txtPreco.Text = dgvListaProduto.Rows[e.RowIndex].Cells[1].Value.ToString();
-                dtpValidade.Text = dgvListaProduto.Rows[e.RowIndex].Cells[2].Value.ToString();
-                nudQtde.Value = Convert.ToInt32(dgvListaProduto.Rows[e.RowIndex].Cells[3].Value.ToString());
-
-                btnAtualizar.Visible = true;
-
+                cboProduto.SelectedValue = dgvListaProduto.Rows[e.RowIndex].Cells[0].Value.ToString();
+                txtPreco.Text = dgvListaProduto.Rows[e.RowIndex].Cells[2].Value.ToString();
+                dtpValidade.Text = dgvListaProduto.Rows[e.RowIndex].Cells[3].Value.ToString();
+                nudQtde.Value = Convert.ToInt32(dgvListaProduto.Rows[e.RowIndex].Cells[4].Value.ToString());
                 
-                
+                btnAtualizar.Enabled = true;
+
+
+
 
             }
         }
-            private void frmCCliente_Load(object sender, EventArgs e)
+        private void CarregarCBO(Dados_Cliente dados)
+        {
+            try
             {
-                Dados_Cliente dados = new Dados_Cliente();
-                CarregarCBO(dados);
-                cboProduto.SelectedIndex = -1;
-                CarregarGrid();
+
+                string sql = "SELECT id_pdt, pdt_nome FROM tb_produto ";
+                MySqlCommand cmd = new MySqlCommand(sql, Conexao.obterConexao());
+                MySqlDataReader leitorCat = cmd.ExecuteReader();
+                DataTable tabelaCat = new DataTable();
+                tabelaCat.Load(leitorCat);
+                DataRow linha = tabelaCat.NewRow();
+                cboProduto.DataSource = tabelaCat;
+                cboProduto.ValueMember = "id_pdt";
+                cboProduto.DisplayMember = "pdt_nome";
+
 
             }
-            private void CarregarCBO(Dados_Cliente dados)
+            catch (MySqlException erro)
             {
-                try
-                {
 
-                    string sql = "SELECT id_pdt, pdt_nome FROM tb_produto ";
-                    MySqlCommand cmd = new MySqlCommand(sql, Conexao.obterConexao());
-                    MySqlDataReader leitorCat = cmd.ExecuteReader();
-                    DataTable tabelaCat = new DataTable();
-                    tabelaCat.Load(leitorCat);
-                    DataRow linha = tabelaCat.NewRow();
-                    cboProduto.DataSource = tabelaCat;
-                    cboProduto.ValueMember = "id_pdt";
-                    cboProduto.DisplayMember = "pdt_nome";
-
-
-                }
-                catch (MySqlException erro)
-                {
-
-                    MessageBox.Show("ERRO - CarregarCBO - AlimentarCBO -" + erro.ErrorCode + erro.Message);
-                }
+                MessageBox.Show("ERRO - CarregarCBO - AlimentarCBO -" + erro.ErrorCode + erro.Message);
             }
+        }
 
-            private void btnVender_Click(object sender, EventArgs e)
+        private void btnVender_Click(object sender, EventArgs e)
+        {
+           
+        }
+
+        private void btnAtualizar_Click(object sender, EventArgs e)
+        {
+            AtualizarVenda atualizarVenda = new AtualizarVenda();
+            Dados_Produto produto = new Dados_Produto();
+
+            produto.quantidade = Convert.ToInt32(nudQtde.Value);
+            produto.preco = txtPreco.Text;
+            produto.validade = dtpValidade.Value;
+
+            atualizarVenda.AtualizarDados(produto);
+
+            CarregarGrid();
+            ConfigurarDataGridView();
+            MessageBox.Show(produto.msg, "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+        }
+
+        private void frmCCliente_Load_1(object sender, EventArgs e)
+        {
+            Dados_Cliente dados = new Dados_Cliente();
+            CarregarCBO(dados);
+            cboProduto.SelectedIndex = -1;
+            CarregarGrid();
+        }
+
+        private void btnVender_Click_1(object sender, EventArgs e)
+        {
+            Dados_Produto produto = new Dados_Produto();
+            SalvarVenda salvarVenda = new SalvarVenda();
+            produto.quantidade = Convert.ToInt32(nudQtde.Value);
+            produto.codigo = Convert.ToInt32(cboProduto.SelectedValue);
+
+            salvarVenda.VerificarQtde(produto);
+
+
+            if (produto.situacao == true)
             {
-                Dados_Produto produto = new Dados_Produto();
-                SalvarVenda salvarVenda = new SalvarVenda();
-                produto.quantidade = Convert.ToInt32(nudQtde.Value);
-                produto.codigo = Convert.ToInt32(cboProduto.SelectedValue);
-                salvarVenda.VerificarQtde(produto);
-
-
-                if (produto.situacao == true)
-                {
-                    produto.preco = txtPreco.Text;
-                    produto.validade = dtpValidade.Value;
-                    //MessageBox.Show(produto.codigo);
-                    salvarVenda.inserirDados(produto);
-                    salvarVenda.VEstoque(produto);
-                    MessageBox.Show(produto.msg, "Aviso", MessageBoxButtons.OK);
-                }
-                else
-                {
-                    MessageBox.Show("Estoque do produto insuficiente", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-                }
+                produto.registro = DateTime.Now.Date;
+                produto.preco = txtPreco.Text;
+                produto.validade = dtpValidade.Value;
+                //MessageBox.Show(produto.codigo);
+                salvarVenda.inserirDados(produto);
+                salvarVenda.VEstoque(produto);
+                MessageBox.Show(produto.msg, "Aviso", MessageBoxButtons.OK);
+            }
+            else
+            {
+                MessageBox.Show("Estoque do produto insuficiente", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
             }
         }
     }
+}
 

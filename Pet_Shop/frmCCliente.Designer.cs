@@ -40,6 +40,7 @@ namespace Pet_Shop
             this.dgvListaProduto = new System.Windows.Forms.DataGridView();
             this.btnVender = new System.Windows.Forms.Button();
             this.dtpValidade = new System.Windows.Forms.DateTimePicker();
+            this.btnAtualizar = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.nudQtde)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvListaProduto)).BeginInit();
             this.SuspendLayout();
@@ -134,6 +135,7 @@ namespace Pet_Shop
             this.btnVender.TabIndex = 10;
             this.btnVender.Text = "Vender";
             this.btnVender.UseVisualStyleBackColor = true;
+            this.btnVender.Click += new System.EventHandler(this.btnVender_Click_1);
             // 
             // dtpValidade
             // 
@@ -143,11 +145,23 @@ namespace Pet_Shop
             this.dtpValidade.Size = new System.Drawing.Size(145, 26);
             this.dtpValidade.TabIndex = 11;
             // 
+            // btnAtualizar
+            // 
+            this.btnAtualizar.Enabled = false;
+            this.btnAtualizar.Location = new System.Drawing.Point(403, 351);
+            this.btnAtualizar.Name = "btnAtualizar";
+            this.btnAtualizar.Size = new System.Drawing.Size(90, 27);
+            this.btnAtualizar.TabIndex = 12;
+            this.btnAtualizar.Text = "Atualizar";
+            this.btnAtualizar.UseVisualStyleBackColor = true;
+            this.btnAtualizar.Click += new System.EventHandler(this.btnAtualizar_Click);
+            // 
             // frmCCliente
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 18F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1277, 665);
+            this.ClientSize = new System.Drawing.Size(1551, 665);
+            this.Controls.Add(this.btnAtualizar);
             this.Controls.Add(this.dtpValidade);
             this.Controls.Add(this.btnVender);
             this.Controls.Add(this.dgvListaProduto);
@@ -162,7 +176,10 @@ namespace Pet_Shop
             this.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "frmCCliente";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "frmCCliente";
+            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
+            this.Load += new System.EventHandler(this.frmCCliente_Load_1);
             ((System.ComponentModel.ISupportInitialize)(this.nudQtde)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvListaProduto)).EndInit();
             this.ResumeLayout(false);
@@ -183,5 +200,6 @@ namespace Pet_Shop
         private System.Windows.Forms.DataGridView dgvListaProduto;
         private System.Windows.Forms.Button btnVender;
         private System.Windows.Forms.DateTimePicker dtpValidade;
+        private System.Windows.Forms.Button btnAtualizar;
     }
 }

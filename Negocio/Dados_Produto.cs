@@ -56,7 +56,7 @@ namespace PetMarket
                 dados.msg = "ERRO - SalvarProduto - InserirDados -" + erro.ErrorCode + erro.Message;
             }
         }
-        
+
     }
     public class SalvarEstoque
     {
@@ -206,7 +206,7 @@ namespace PetMarket
             {
                 dados.msg = "ERRO - SalvarCompra - CEstoque -" + erro.ErrorCode + erro.Message;
             }
-          
+
         }
     }
     public class SalvarVenda
@@ -236,7 +236,7 @@ namespace PetMarket
                     }
                 }
             }
-            catch(MySqlException erro)
+            catch (MySqlException erro)
             {
                 dados.msg = "ERRO - SalvarVenda - VerificarQtde -" + erro.ErrorCode + erro.Message;
             }
@@ -300,33 +300,33 @@ namespace PetMarket
             {
                 dados.msg = "ERRO - SalvarCompra - VEstoque -" + erro.ErrorCode + erro.Message;
             }
-                try
+            try
+            {
+                string sql = "UPDATE tb_estoque SET est_qtde=@qtde WHERE est_id_pdt=@codigo";
+                MySqlCommand cmd = new MySqlCommand(sql, Conexao.obterConexao());
+                cmd.CommandType = CommandType.Text;
+                cmd.Parameters.Add(new MySqlParameter("@qtde", dados.quantidade));
+                cmd.Parameters.Add(new MySqlParameter("@codigo", dados.codigo));
+                int registrosAtualizados = cmd.ExecuteNonQuery();
+                //Verifica se algum registro foi atualizado
+                if (registrosAtualizados >= 1)
                 {
-                    string sql = "UPDATE tb_estoque SET est_qtde=@qtde WHERE est_id_pdt=@codigo";
-                    MySqlCommand cmd = new MySqlCommand(sql, Conexao.obterConexao());
-                    cmd.CommandType = CommandType.Text;
-                    cmd.Parameters.Add(new MySqlParameter("@qtde", dados.quantidade));
-                    cmd.Parameters.Add(new MySqlParameter("@codigo", dados.codigo));
-                    int registrosAtualizados = cmd.ExecuteNonQuery();
-                    //Verifica se algum registro foi atualizado
-                    if (registrosAtualizados >= 1)
-                    {
-                        dados.msg = "Sucesso ao atualizar o registro!";
-                    }
-                    else
-                    {
-                        dados.msg = "Falha ao atualizar o registro!";
-                    }
-                    Conexao.fecharConexao();
+                    dados.msg = "Sucesso ao atualizar o registro!";
+                }
+                else
+                {
+                    dados.msg = "Falha ao atualizar o registro!";
+                }
+                Conexao.fecharConexao();
 
-                }
-                catch (MySqlException erro)
-                {
-                    dados.msg = "ERRO - SalvarCompra - CEstoque -" + erro.ErrorCode + erro.Message;
-                }
+            }
+            catch (MySqlException erro)
+            {
+                dados.msg = "ERRO - SalvarCompra - CEstoque -" + erro.ErrorCode + erro.Message;
+            }
 
         }
-        
+
     }
     public class ConsultarProduto
     {
@@ -464,19 +464,16 @@ namespace PetMarket
             {
                 //String com o comando de atualização
                 string sql = "UPDATE tb_venda SET " +
-                "ven_id_pdt=@produto,ven_preco=@preco,ven_validade=@validade," +
-                "pdt_registro=@registro" +
-                " WHERE id_pdt=@codigo";
+                "ven_preco=@preco,ven_validade=@validade, ven_qtde=@@qtde" +
+                " WHERE ven_id_pdt=@codigo";
                 //Uso da abertura de Conexão e da string sql
                 MySqlCommand cmd = new MySqlCommand(sql, Conexao.obterConexao());
                 //Tipo de comando: Text ou Stored Procedure
                 cmd.CommandType = CommandType.Text;
                 //Parâmetros que serão substituídos (@) por variáveis
-                cmd.Parameters.Add(new MySqlParameter("@codigo", dados.codigo));
-                cmd.Parameters.Add(new MySqlParameter("@nome", dados.nome));
-                cmd.Parameters.Add(new MySqlParameter("@tipo", dados.tipo));
-                cmd.Parameters.Add(new MySqlParameter("@marca", dados.marca));
-                cmd.Parameters.Add(new MySqlParameter("@registro", dados.registro));
+                cmd.Parameters.Add(new MySqlParameter("@preco", dados.preco));
+                cmd.Parameters.Add(new MySqlParameter("@validade", dados.validade));
+                cmd.Parameters.Add(new MySqlParameter("@qtde", dados.quantidade));
                 int registrosAtualizados = cmd.ExecuteNonQuery();
                 //Verifica se algum registro foi atualizado
                 if (registrosAtualizados >= 1)
@@ -492,12 +489,12 @@ namespace PetMarket
 
             catch (MySqlException erro)
             {
-                dados.msg = "ERRO - AtualizarProduto - AtualizarDados - " +
+                dados.msg = "ERRO - AtualizarVenda - AtualizarDados - " +
                 erro.Message.ToString();
             }
         }
     }
-    
+
     public class ConsultarCompra
     {
         public DataTable ListarCompra(Dados_Produto dados)
@@ -564,8 +561,8 @@ namespace PetMarket
                 }
                 Conexao.fecharConexao();
             }
-            
-             catch (MySqlException erro)
+
+            catch (MySqlException erro)
             {
                 dados.msg = "ERRO - AtualizarCompra - AtualizarDados - " +
                 erro.Message.ToString();
@@ -600,4 +597,66 @@ namespace PetMarket
 
         }
     }
+    public class ConsultarEstoque
+    {
+        public DataTable ListarDadosProdutos(Dados_Produto dados)
+        {
+            DataTable tabela = new DataTable();
+            try
+            {
+                //Intrução de comando SELECT para o BD
+                string sql = "SELECT id_est, pdt_nome, est_qtde FROM tb_estoque INNER JOIN tb_produto ON est_id_pdt=id_pdt";
+                //Comando para o SELECT e a Conexão - MySqlCommand
+                MySqlCommand cmd = new MySqlCommand(sql, Conexao.obterConexao());
+                //Adaptar os dados do BD para o formato de tabela
+                //com a execução da Conexão e SELECT
+                MySqlDataAdapter adaptador = new MySqlDataAdapter(cmd);
+                //Preenchimento da variável em formato de tabela - Fill = preencher
+                adaptador.Fill(tabela);
+                //Fechar a conexão
+                Conexao.fecharConexao();
+            }
+            catch (MySqlException erro)
+            {
+                dados.msg = "Erro - ConsultarEstoque - ListarDadosProduto " +
+                erro.Message.ToString();
+            }
+            //O comando SELECT sempre precisa retornar algum dado
+            //Este retorno será no formato de tabela, sendo aplicado ao DataGridView
+            return tabela;
+
+        }
+        public DataTable ListarDadosProdutoFiltro(Dados_Produto dados)
+        {
+            DataTable tabela = new DataTable();
+            try
+            {
+                //Intrução de comando SELECT para o BD
+                string sql = "SELECT id_est, pdt_nome, est_qtde FROM tb_estoque INNER JOIN tb_produto ON est_id_pdt=id_pdt WHERE pdt_nome LIKE @nome";
+                //Comando para o SELECT e a Conexão - MySqlCommand
+                MySqlCommand cmd = new MySqlCommand(sql, Conexao.obterConexao());
+                cmd.Parameters.Add(new MySqlParameter("@nome", "%" + dados.nome + "%"));
+                //Adaptar os dados do BD para o formato de tabela
+                //com a execução da Conexão e SELECT
+                MySqlDataAdapter adaptador = new MySqlDataAdapter(cmd);
+                //Preenchimento da variável em formato de tabela - Fill = preencher
+                adaptador.Fill(tabela);
+                //Fechar a conexão
+                Conexao.fecharConexao();
+            }
+
+            catch (MySqlException erro)
+            {
+                dados.msg = "Erro - ConsultarClientes - ListarDadosClientes " +
+                erro.Message.ToString();
+            }
+            //O comando SELECT sempre precisa retornar algum dado
+            //Este retorno será no formato de tabela, sendo aplicado ao DataGridView
+            return tabela;
+        }
+
+
+    }
 }
+
+

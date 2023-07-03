@@ -62,5 +62,12 @@ namespace Pet_Shop
             formfilho.MdiParent = this;
             formfilho.Show();
         }
+
+        private void estoqueToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmEstoquecs formfilho = new frmEstoquecs();
+            formfilho.MdiParent = this;
+            formfilho.Show();
+        }
     }
 }
