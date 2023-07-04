@@ -31,6 +31,7 @@ namespace Pet_Shop
                 produto.quantidade = Convert.ToInt32(nmrQtde.Value);
                 produto.validade = dtpValidade.Value;
                 produto.fornecedor = txtFornecedor.Text;
+            produto.total = Convert.ToInt32(produto.quantidade) * Convert.ToInt32(produto.preco);
             salvarCompra.InserirDados(produto);
             salvarCompra.CEstoque(produto);
             MessageBox.Show(produto.msg);
@@ -58,6 +59,7 @@ namespace Pet_Shop
             Dados_Produto produtos = new Dados_Produto();
 
             dgvListarProduto.DataSource = consultarProduto.ListarDados(produtos);
+            ConfiguraDataGridView();
         }
 
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
@@ -106,5 +108,7 @@ namespace Pet_Shop
             
 
         }
+
+
     }
 }

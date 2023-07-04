@@ -23,6 +23,7 @@ namespace PetMarket
         public string fornecedor { get; set; }
         public Boolean situacao { get; set; }
         public int produto { get; set; }
+        public decimal total { get; set; }
 
     }
 
@@ -123,8 +124,8 @@ namespace PetMarket
             try
             {
 
-                string sql = "INSERT INTO tb_fornecedor (for_id_pdt, for_fornecedor, for_dataval, for_qtde, for_preco, for_registro) " +
-                    "VALUES (@idpdt, @fornecedor, @validade, @qtde, @preco, @registro)";
+                string sql = "INSERT INTO tb_fornecedor (for_id_pdt, for_fornecedor, for_dataval, for_qtde, for_preco, for_registro, for_total) " +
+                    "VALUES (@idpdt, @fornecedor, @validade, @qtde, @preco, @registro, @total)";
                 MySqlCommand cmd = new MySqlCommand(sql, Conexao.obterConexao());
                 cmd.CommandType = CommandType.Text;
                 cmd.Parameters.Add(new MySqlParameter("@idpdt", dados.codigo));
@@ -133,6 +134,7 @@ namespace PetMarket
                 cmd.Parameters.Add(new MySqlParameter("@qtde", dados.quantidade));
                 cmd.Parameters.Add(new MySqlParameter("@preco", dados.preco));
                 cmd.Parameters.Add(new MySqlParameter("@registro", dados.registro));
+                cmd.Parameters.Add(new MySqlParameter("@total", dados.total));
 
                 int registrosInseridos = cmd.ExecuteNonQuery();
                 if (registrosInseridos >= 1)
@@ -246,14 +248,15 @@ namespace PetMarket
             try
             {
 
-                string sql = "INSERT INTO tb_venda (ven_id_pdt, ven_qtde, ven_preco, ven_validade) " +
-                    "VALUES (@idpdt, @qtde, @preco, @validade)";
+                string sql = "INSERT INTO tb_venda (ven_id_pdt, ven_qtde, ven_preco, ven_validade, ven_total) " +
+                    "VALUES (@idpdt, @qtde, @preco, @validade, @total)";
                 MySqlCommand cmd = new MySqlCommand(sql, Conexao.obterConexao());
                 cmd.CommandType = CommandType.Text;
                 cmd.Parameters.Add(new MySqlParameter("@idpdt", dados.codigo));
                 cmd.Parameters.Add(new MySqlParameter("@validade", dados.validade));
                 cmd.Parameters.Add(new MySqlParameter("@qtde", dados.quantidade));
                 cmd.Parameters.Add(new MySqlParameter("@preco", dados.preco));
+                cmd.Parameters.Add(new MySqlParameter("@total", dados.total));
 
                 int registrosInseridos = cmd.ExecuteNonQuery();
                 if (registrosInseridos >= 1)
@@ -464,7 +467,7 @@ namespace PetMarket
             {
                 //String com o comando de atualização
                 string sql = "UPDATE tb_venda SET " +
-                "ven_preco=@preco,ven_validade=@validade, ven_qtde=@@qtde" +
+                "ven_preco=@preco,ven_validade=@validade, ven_qtde=@qtde, ven_total" +
                 " WHERE ven_id_pdt=@codigo";
                 //Uso da abertura de Conexão e da string sql
                 MySqlCommand cmd = new MySqlCommand(sql, Conexao.obterConexao());
@@ -474,6 +477,7 @@ namespace PetMarket
                 cmd.Parameters.Add(new MySqlParameter("@preco", dados.preco));
                 cmd.Parameters.Add(new MySqlParameter("@validade", dados.validade));
                 cmd.Parameters.Add(new MySqlParameter("@qtde", dados.quantidade));
+                cmd.Parameters.Add(new MySqlParameter("@total", dados.total));
                 int registrosAtualizados = cmd.ExecuteNonQuery();
                 //Verifica se algum registro foi atualizado
                 if (registrosAtualizados >= 1)
@@ -535,7 +539,7 @@ namespace PetMarket
                 //String com o comando de atualização
                 string sql = "UPDATE tb_fornecedor SET " +
                 "for_fornecedor=@fornecedor,for_dataval=@validade,for_qtde=@qtde," +
-                "for_preco=@preco,for_registro=@registro,for_id_pdt=@produto" +
+                "for_preco=@preco,for_registro=@registro,for_id_pdt=@produto, for_total=@total" +
                 " WHERE for_id=@codigo";
                 //Uso da abertura de Conexão e da string sql
                 MySqlCommand cmd = new MySqlCommand(sql, Conexao.obterConexao());
@@ -549,6 +553,7 @@ namespace PetMarket
                 cmd.Parameters.Add(new MySqlParameter("@preco", dados.preco));
                 cmd.Parameters.Add(new MySqlParameter("@registro", dados.registro));
                 cmd.Parameters.Add(new MySqlParameter("@produto", dados.produto));
+                cmd.Parameters.Add(new MySqlParameter("@total", dados.total));
                 int registrosAtualizados = cmd.ExecuteNonQuery();
                 //Verifica se algum registro foi atualizado
                 if (registrosAtualizados >= 1)

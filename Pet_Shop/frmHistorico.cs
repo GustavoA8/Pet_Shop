@@ -76,7 +76,9 @@ namespace Pet_Shop
             produto.preco = txtPreco.Text;
             produto.registro = dtpRegistro.Value;
             produto.produto =Convert.ToInt32( txtProduto.Text);
-            
+            produto.total = Convert.ToInt32(produto.quantidade) * Convert.ToInt32(produto.preco);
+
+
             atualizarCompra.AtualizarDados(produto);
             //Atualizar e configurar o DataGridView após atualização
             CarregarGrid();
@@ -122,5 +124,6 @@ namespace Pet_Shop
 
             
         }
+        
     }
 }

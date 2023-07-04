@@ -59,7 +59,7 @@ namespace Pet_Shop
             if (e.RowIndex >= 0)
             {
                 //TextBox = DataGridView.LinhaSelecionada.Célula[Posição].Valor.ParaTexto
-                cboProduto.SelectedValue = dgvListaProduto.Rows[e.RowIndex].Cells[0].Value.ToString();
+                cboProduto.SelectedValue = dgvListaProduto.Rows[e.RowIndex].Cells[1].Value.ToString();
                 txtPreco.Text = dgvListaProduto.Rows[e.RowIndex].Cells[2].Value.ToString();
                 dtpValidade.Text = dgvListaProduto.Rows[e.RowIndex].Cells[3].Value.ToString();
                 nudQtde.Value = Convert.ToInt32(dgvListaProduto.Rows[e.RowIndex].Cells[4].Value.ToString());
@@ -108,6 +108,7 @@ namespace Pet_Shop
             produto.quantidade = Convert.ToInt32(nudQtde.Value);
             produto.preco = txtPreco.Text;
             produto.validade = dtpValidade.Value;
+            produto.total = Convert.ToInt32(produto.quantidade) * Convert.ToInt32(produto.preco);
 
             atualizarVenda.AtualizarDados(produto);
 
@@ -140,6 +141,7 @@ namespace Pet_Shop
                 produto.registro = DateTime.Now.Date;
                 produto.preco = txtPreco.Text;
                 produto.validade = dtpValidade.Value;
+                produto.total = Convert.ToInt32(produto.quantidade) * Convert.ToInt32(produto.preco);
                 //MessageBox.Show(produto.codigo);
                 salvarVenda.inserirDados(produto);
                 salvarVenda.VEstoque(produto);
@@ -150,6 +152,7 @@ namespace Pet_Shop
                 MessageBox.Show("Estoque do produto insuficiente", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
             }
         }
+       
     }
 }
 
