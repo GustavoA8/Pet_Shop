@@ -47,6 +47,7 @@ namespace Pet_Shop
             this.dtpValidade = new System.Windows.Forms.DateTimePicker();
             this.dgvListarProduto = new System.Windows.Forms.DataGridView();
             this.btnHistorico = new System.Windows.Forms.Button();
+            this.btnLimpar = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.nmrQtde)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvListarProduto)).BeginInit();
             this.SuspendLayout();
@@ -209,11 +210,22 @@ namespace Pet_Shop
             this.btnHistorico.UseVisualStyleBackColor = true;
             this.btnHistorico.Click += new System.EventHandler(this.btnHistorico_Click);
             // 
+            // btnLimpar
+            // 
+            this.btnLimpar.Location = new System.Drawing.Point(895, 474);
+            this.btnLimpar.Name = "btnLimpar";
+            this.btnLimpar.Size = new System.Drawing.Size(80, 28);
+            this.btnLimpar.TabIndex = 24;
+            this.btnLimpar.Text = "Limpar";
+            this.btnLimpar.UseVisualStyleBackColor = true;
+            this.btnLimpar.Click += new System.EventHandler(this.btnLimpar_Click);
+            // 
             // frmCompra
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 18F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1320, 691);
+            this.Controls.Add(this.btnLimpar);
             this.Controls.Add(this.btnHistorico);
             this.Controls.Add(this.dgvListarProduto);
             this.Controls.Add(this.dtpValidade);
@@ -265,5 +277,6 @@ namespace Pet_Shop
         private System.Windows.Forms.DateTimePicker dtpValidade;
         private System.Windows.Forms.DataGridView dgvListarProduto;
         private System.Windows.Forms.Button btnHistorico;
+        private System.Windows.Forms.Button btnLimpar;
     }
 }

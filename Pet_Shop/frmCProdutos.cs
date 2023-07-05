@@ -36,6 +36,7 @@ namespace Pet_Shop
                 MessageBox.Show(produto.msg);
                 
                 LimparCampos();
+                CarregarGrid();
             }
             else
             {
@@ -49,6 +50,7 @@ namespace Pet_Shop
         }
         private void LimparCampos()
         {
+            txtID.Clear();
             txtNome.Clear();
             txtMarca.Clear();
             cboTipo.SelectedIndex = -1;
@@ -129,6 +131,16 @@ namespace Pet_Shop
         private void dgvListarProduto_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
 
+        }
+
+        private void btnFechar_Click(object sender, EventArgs e)
+        {
+            DialogResult sair = MessageBox.Show("Deseja sair da aplicação?", "Aviso", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+
+            if (sair == DialogResult.Yes)
+            {
+                Application.Exit();
+            }
         }
     }
 }

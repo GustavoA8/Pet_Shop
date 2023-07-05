@@ -81,10 +81,12 @@ namespace Pet_Shop
 
             atualizarCompra.AtualizarDados(produto);
             //Atualizar e configurar o DataGridView após atualização
-            CarregarGrid();
-            ConfigurarDataGridView();
+           
             MessageBox.Show(produto.msg, "Aviso",
             MessageBoxButtons.OK, MessageBoxIcon.Information);
+            CarregarGrid();
+            ConfigurarDataGridView();
+            Limpar();
         }
 
         private void dgvFornecedor_CellClick(object sender, DataGridViewCellEventArgs e)
@@ -123,6 +125,14 @@ namespace Pet_Shop
             }
 
             
+        }
+        private void Limpar()
+        {
+            txtID.Clear();
+            txtFornecedor.Clear();
+            txtPreco.Clear();
+            txtProduto.Clear();
+            nudQtde.Value = 0;
         }
         
     }

@@ -29,6 +29,7 @@ namespace Pet_Shop
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmCCliente));
             this.cboProduto = new System.Windows.Forms.ComboBox();
             this.txtPreco = new System.Windows.Forms.TextBox();
             this.nudQtde = new System.Windows.Forms.NumericUpDown();
@@ -36,7 +37,6 @@ namespace Pet_Shop
             this.lblPreco = new System.Windows.Forms.Label();
             this.lblValidade = new System.Windows.Forms.Label();
             this.lblQtde = new System.Windows.Forms.Label();
-            this.lblTitulo = new System.Windows.Forms.Label();
             this.dgvListaProduto = new System.Windows.Forms.DataGridView();
             this.btnVender = new System.Windows.Forms.Button();
             this.dtpValidade = new System.Windows.Forms.DateTimePicker();
@@ -73,49 +73,48 @@ namespace Pet_Shop
             // lblProduto
             // 
             this.lblProduto.AutoSize = true;
+            this.lblProduto.BackColor = System.Drawing.Color.SpringGreen;
+            this.lblProduto.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblProduto.ForeColor = System.Drawing.SystemColors.ControlLightLight;
             this.lblProduto.Location = new System.Drawing.Point(400, 281);
             this.lblProduto.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblProduto.Name = "lblProduto";
-            this.lblProduto.Size = new System.Drawing.Size(63, 18);
+            this.lblProduto.Size = new System.Drawing.Size(71, 19);
             this.lblProduto.TabIndex = 4;
             this.lblProduto.Text = "Produto";
             // 
             // lblPreco
             // 
             this.lblPreco.AutoSize = true;
+            this.lblPreco.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblPreco.ForeColor = System.Drawing.SystemColors.ControlLightLight;
             this.lblPreco.Location = new System.Drawing.Point(698, 283);
             this.lblPreco.Name = "lblPreco";
-            this.lblPreco.Size = new System.Drawing.Size(50, 18);
+            this.lblPreco.Size = new System.Drawing.Size(54, 19);
             this.lblPreco.TabIndex = 5;
             this.lblPreco.Text = "Preço";
             // 
             // lblValidade
             // 
             this.lblValidade.AutoSize = true;
+            this.lblValidade.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblValidade.ForeColor = System.Drawing.SystemColors.ControlLightLight;
             this.lblValidade.Location = new System.Drawing.Point(950, 283);
             this.lblValidade.Name = "lblValidade";
-            this.lblValidade.Size = new System.Drawing.Size(70, 18);
+            this.lblValidade.Size = new System.Drawing.Size(74, 19);
             this.lblValidade.TabIndex = 6;
             this.lblValidade.Text = "Validade";
             // 
             // lblQtde
             // 
             this.lblQtde.AutoSize = true;
+            this.lblQtde.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblQtde.ForeColor = System.Drawing.SystemColors.ControlLightLight;
             this.lblQtde.Location = new System.Drawing.Point(1226, 281);
             this.lblQtde.Name = "lblQtde";
-            this.lblQtde.Size = new System.Drawing.Size(42, 18);
+            this.lblQtde.Size = new System.Drawing.Size(45, 19);
             this.lblQtde.TabIndex = 7;
             this.lblQtde.Text = "Qtde";
-            // 
-            // lblTitulo
-            // 
-            this.lblTitulo.AutoSize = true;
-            this.lblTitulo.Font = new System.Drawing.Font("Arial", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblTitulo.Location = new System.Drawing.Point(846, 183);
-            this.lblTitulo.Name = "lblTitulo";
-            this.lblTitulo.Size = new System.Drawing.Size(96, 32);
-            this.lblTitulo.TabIndex = 8;
-            this.lblTitulo.Text = "Venda";
             // 
             // dgvListaProduto
             // 
@@ -160,12 +159,13 @@ namespace Pet_Shop
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 18F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
+            this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(1551, 665);
             this.Controls.Add(this.btnAtualizar);
             this.Controls.Add(this.dtpValidade);
             this.Controls.Add(this.btnVender);
             this.Controls.Add(this.dgvListaProduto);
-            this.Controls.Add(this.lblTitulo);
             this.Controls.Add(this.lblQtde);
             this.Controls.Add(this.lblValidade);
             this.Controls.Add(this.lblPreco);
@@ -173,6 +173,7 @@ namespace Pet_Shop
             this.Controls.Add(this.nudQtde);
             this.Controls.Add(this.txtPreco);
             this.Controls.Add(this.cboProduto);
+            this.DoubleBuffered = true;
             this.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "frmCCliente";
@@ -196,7 +197,6 @@ namespace Pet_Shop
         private System.Windows.Forms.Label lblPreco;
         private System.Windows.Forms.Label lblValidade;
         private System.Windows.Forms.Label lblQtde;
-        private System.Windows.Forms.Label lblTitulo;
         private System.Windows.Forms.DataGridView dgvListaProduto;
         private System.Windows.Forms.Button btnVender;
         private System.Windows.Forms.DateTimePicker dtpValidade;

@@ -155,6 +155,7 @@ namespace PetMarket
         public void CEstoque(Dados_Produto dados)
         {
             int qtde = new int();
+
             try
             {
                 string sql = "SELECT est_qtde FROM tb_estoque WHERE est_id_pdt=@codigo";
@@ -183,7 +184,6 @@ namespace PetMarket
 
                 dados.msg = "ERRO - PegarCodigo - InserirDados -" + erro.ErrorCode + erro.Message;
             }
-
             try
             {
                 string sql = "UPDATE tb_estoque SET est_qtde=@qtde WHERE est_id_pdt=@codigo";
@@ -196,10 +196,12 @@ namespace PetMarket
                 if (registrosAtualizados >= 1)
                 {
                     dados.msg = "Sucesso ao atualizar o registro!";
+
                 }
                 else
                 {
                     dados.msg = "Falha ao atualizar o registro!";
+
                 }
                 Conexao.fecharConexao();
 
@@ -208,6 +210,8 @@ namespace PetMarket
             {
                 dados.msg = "ERRO - SalvarCompra - CEstoque -" + erro.ErrorCode + erro.Message;
             }
+
+
 
         }
     }
@@ -294,7 +298,7 @@ namespace PetMarket
                     while (dr.Read())
                     {
                         qtde = dr.GetInt32(0);
-                        dados.quantidade -= qtde;
+                        qtde -= dados.quantidade;
                     }//11 + 1 = 12
                 }
                 Conexao.fecharConexao();
@@ -308,7 +312,7 @@ namespace PetMarket
                 string sql = "UPDATE tb_estoque SET est_qtde=@qtde WHERE est_id_pdt=@codigo";
                 MySqlCommand cmd = new MySqlCommand(sql, Conexao.obterConexao());
                 cmd.CommandType = CommandType.Text;
-                cmd.Parameters.Add(new MySqlParameter("@qtde", dados.quantidade));
+                cmd.Parameters.Add(new MySqlParameter("@qtde", qtde));
                 cmd.Parameters.Add(new MySqlParameter("@codigo", dados.codigo));
                 int registrosAtualizados = cmd.ExecuteNonQuery();
                 //Verifica se algum registro foi atualizado

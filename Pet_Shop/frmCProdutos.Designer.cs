@@ -159,6 +159,7 @@ namespace Pet_Shop
             this.btnFechar.TabIndex = 17;
             this.btnFechar.Text = "Fechar";
             this.btnFechar.UseVisualStyleBackColor = true;
+            this.btnFechar.Click += new System.EventHandler(this.btnFechar_Click);
             // 
             // cboTipo
             // 
@@ -166,7 +167,9 @@ namespace Pet_Shop
             this.cboTipo.Items.AddRange(new object[] {
             "Acessório",
             "Alimento",
-            "Remédio"});
+            "Remédio",
+            "Higiene",
+            "Brinquedo"});
             this.cboTipo.Location = new System.Drawing.Point(650, 419);
             this.cboTipo.Name = "cboTipo";
             this.cboTipo.Size = new System.Drawing.Size(136, 26);

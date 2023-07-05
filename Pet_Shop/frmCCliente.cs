@@ -19,6 +19,10 @@ namespace Pet_Shop
         public frmCCliente()
         {
             InitializeComponent();
+            lblPreco.BackColor = Color.Transparent;
+            lblProduto.BackColor = Color.Transparent;
+            lblQtde.BackColor = Color.Transparent;
+            lblValidade.BackColor = Color.Transparent;
         }
 
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
@@ -151,6 +155,7 @@ namespace Pet_Shop
             {
                 MessageBox.Show("Estoque do produto insuficiente", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
             }
+            CarregarGrid();
         }
        
     }

@@ -41,6 +41,7 @@ namespace Pet_Shop
         }
         private void LimparCampos()
         {
+            txtID.Clear();
             txtProduto.Clear();
             txtProduto.Clear();
             txtPreco.Clear();
@@ -78,7 +79,7 @@ namespace Pet_Shop
                 dgvListarProduto.Columns[4].HeaderText = "Registro";
                 //Configurar a largura das colunas no DataGridView
                 dgvListarProduto.Columns[0].Width = 50;
-                dgvListarProduto.Columns[1].Width = 100;
+                dgvListarProduto.Columns[1].Width = 210;
                 dgvListarProduto.Columns[2].Width = 100;
                 dgvListarProduto.Columns[3].Width = 100;
                 dgvListarProduto.Columns[4].Width = 100;
@@ -109,6 +110,9 @@ namespace Pet_Shop
 
         }
 
-
+        private void btnLimpar_Click(object sender, EventArgs e)
+        {
+            LimparCampos();
+        }
     }
 }
