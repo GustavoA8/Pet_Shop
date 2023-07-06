@@ -92,6 +92,7 @@ namespace Pet_Shop
         private void frmClientes_Load(object sender, EventArgs e)
         {
             CarregarGrid();
+            dgvListaClientes.ReadOnly = true;
         }
 
         private void btnLimpar_Click(object sender, EventArgs e)

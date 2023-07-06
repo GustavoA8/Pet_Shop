@@ -61,6 +61,8 @@ namespace Pet_Shop
             this.txtPreco.Name = "txtPreco";
             this.txtPreco.Size = new System.Drawing.Size(148, 26);
             this.txtPreco.TabIndex = 1;
+            this.txtPreco.TextChanged += new System.EventHandler(this.txtPreco_TextChanged);
+            this.txtPreco.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtPreco_KeyPress);
             // 
             // nudQtde
             // 

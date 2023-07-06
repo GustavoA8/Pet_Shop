@@ -27,6 +27,7 @@ namespace Pet_Shop
         private void frmHistorico_Load(object sender, EventArgs e)
         {
             CarregarGrid();
+            dgvFornecedor.ReadOnly = true;
         }
 
         public void CarregarGrid()
@@ -134,6 +135,11 @@ namespace Pet_Shop
             txtProduto.Clear();
             nudQtde.Value = 0;
         }
-        
+
+        private void txtPreco_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if ((Char.IsLetter(e.KeyChar)) || (Char.IsWhiteSpace(e.KeyChar)))
+                e.Handled = true;
+        }
     }
 }

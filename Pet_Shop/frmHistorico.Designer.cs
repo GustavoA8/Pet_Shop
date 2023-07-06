@@ -142,6 +142,7 @@ namespace Pet_Shop
             this.txtPreco.Name = "txtPreco";
             this.txtPreco.Size = new System.Drawing.Size(110, 26);
             this.txtPreco.TabIndex = 9;
+            this.txtPreco.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtPreco_KeyPress);
             // 
             // label1
             // 

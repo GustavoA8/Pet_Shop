@@ -85,6 +85,8 @@ namespace Pet_Shop
             salvarAnimais.InserirDados(animais);
             //Exibir a mensagem de Sucesso ou Falha
             MessageBox.Show(animais.mensagem, "Aviso", MessageBoxButtons.OK);
+            Limpar();
+            CarregarGrid();
 
         }
 
@@ -95,6 +97,7 @@ namespace Pet_Shop
         }
         private void Limpar()
         {
+            txtCodigo.Clear();
             txtNomePet.Clear();
             cboCodigoDono.SelectedIndex = -1;
             txtFuncionario.Clear();
@@ -108,6 +111,7 @@ namespace Pet_Shop
             rdoSim.Checked = false;
             txtRga.Clear();
             cboSexo.SelectedItem = null;
+            btnSalvar.Enabled = true;
         }
 
         private void btnFechar_Click(object sender, EventArgs e)
@@ -127,6 +131,7 @@ namespace Pet_Shop
 
             ListarCodigoDono();
             cboCodigoDono.SelectedIndex = -1;
+            dgvListaAnimais.ReadOnly = true;
         }
         public void CarregarGrid()
         {

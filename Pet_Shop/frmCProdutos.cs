@@ -59,6 +59,7 @@ namespace Pet_Shop
         private void frmCProdutos_Load(object sender, EventArgs e)
         {
             CarregarGrid();
+            dgvListarProduto.ReadOnly = true;
         }
 
         private void CarregarGrid()

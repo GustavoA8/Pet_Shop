@@ -154,6 +154,7 @@ namespace Pet_Shop
             this.txtPreco.Name = "txtPreco";
             this.txtPreco.Size = new System.Drawing.Size(100, 26);
             this.txtPreco.TabIndex = 14;
+            this.txtPreco.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtPreco_KeyPress);
             // 
             // txtProduto
             // 

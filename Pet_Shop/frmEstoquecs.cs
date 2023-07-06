@@ -22,6 +22,7 @@ namespace Pet_Shop
         private void frmEstoquecs_Load(object sender, EventArgs e)
         {
             CarregarGrid();
+            dgvListarEstoque.ReadOnly = true;
         }
 
         private void CarregarGrid()

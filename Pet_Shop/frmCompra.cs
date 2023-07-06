@@ -31,7 +31,7 @@ namespace Pet_Shop
                 produto.quantidade = Convert.ToInt32(nmrQtde.Value);
                 produto.validade = dtpValidade.Value;
                 produto.fornecedor = txtFornecedor.Text;
-            produto.total = Convert.ToInt32(produto.quantidade) * Convert.ToInt32(produto.preco);
+            produto.total = Convert.ToDecimal(produto.quantidade) * Convert.ToDecimal(produto.preco);
             salvarCompra.InserirDados(produto);
             salvarCompra.CEstoque(produto);
             MessageBox.Show(produto.msg);
@@ -52,6 +52,7 @@ namespace Pet_Shop
         private void frmCompra_Load(object sender, EventArgs e)
         {
             CarregarGrid();
+            dgvListarProduto.ReadOnly = true;
         }
 
         private void CarregarGrid()
@@ -113,6 +114,12 @@ namespace Pet_Shop
         private void btnLimpar_Click(object sender, EventArgs e)
         {
             LimparCampos();
+        }
+
+        private void txtPreco_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if ((Char.IsLetter(e.KeyChar)) || (Char.IsWhiteSpace(e.KeyChar)))
+                e.Handled = true;
         }
     }
 }

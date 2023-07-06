@@ -23,6 +23,7 @@ namespace Pet_Shop
             lblProduto.BackColor = Color.Transparent;
             lblQtde.BackColor = Color.Transparent;
             lblValidade.BackColor = Color.Transparent;
+
         }
 
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
@@ -112,7 +113,7 @@ namespace Pet_Shop
             produto.quantidade = Convert.ToInt32(nudQtde.Value);
             produto.preco = txtPreco.Text;
             produto.validade = dtpValidade.Value;
-            produto.total = Convert.ToInt32(produto.quantidade) * Convert.ToInt32(produto.preco);
+            produto.total = Convert.ToDecimal(produto.quantidade) * Convert.ToDecimal(produto.preco);
 
             atualizarVenda.AtualizarDados(produto);
 
@@ -128,6 +129,9 @@ namespace Pet_Shop
             CarregarCBO(dados);
             cboProduto.SelectedIndex = -1;
             CarregarGrid();
+            dgvListaProduto.ReadOnly = true;
+
+
         }
 
         private void btnVender_Click_1(object sender, EventArgs e)
@@ -145,7 +149,7 @@ namespace Pet_Shop
                 produto.registro = DateTime.Now.Date;
                 produto.preco = txtPreco.Text;
                 produto.validade = dtpValidade.Value;
-                produto.total = Convert.ToInt32(produto.quantidade) * Convert.ToInt32(produto.preco);
+                produto.total = Convert.ToDecimal(produto.quantidade) * Convert.ToDecimal(produto.preco);
                 //MessageBox.Show(produto.codigo);
                 salvarVenda.inserirDados(produto);
                 salvarVenda.VEstoque(produto);
@@ -157,7 +161,17 @@ namespace Pet_Shop
             }
             CarregarGrid();
         }
-       
+
+        private void txtPreco_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txtPreco_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if ((Char.IsLetter(e.KeyChar)) || (Char.IsWhiteSpace(e.KeyChar))) 
+                e.Handled = true;
+        }
     }
 }
 
