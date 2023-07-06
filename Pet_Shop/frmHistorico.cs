@@ -113,12 +113,17 @@ namespace Pet_Shop
             Dados_Produto produto = new Dados_Produto();
 
             produto.codigo = Convert.ToInt32( txtID.Text);
+            produto.produto = Convert.ToInt32(txtProduto.Text);
+            produto.quantidade = Convert.ToInt32( nudQtde.Value);
             DialogResult confirmacao = MessageBox.Show("Deseja deletar o registro? Código " +
               txtID.Text, "Aviso", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
             if (confirmacao == DialogResult.Yes)
             {
                 //Executar o método de exclusão
+                deletarCompra.DCEstoque(produto);
+                MessageBox.Show(produto.msg);
                 deletarCompra.DeletarDados(produto);
+                
                 CarregarGrid();
                 ConfigurarDataGridView();
                 MessageBox.Show(produto.msg, "Aviso", MessageBoxButtons.OK,
