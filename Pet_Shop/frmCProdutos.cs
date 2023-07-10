@@ -23,7 +23,7 @@ namespace Pet_Shop
             Dados_Produto produto = new Dados_Produto();
             SalvarProduto salvarProduto = new SalvarProduto();
             SalvarEstoque salvarEstoque = new SalvarEstoque();
-            if (txtNome.Text != null && cboTipo.Text != null && txtMarca.Text != null)
+            if (txtNome.Text != "" && cboTipo.Text != "" && txtMarca.Text != "")
             {
                 produto.nome = txtNome.Text;
                 produto.tipo = cboTipo.Text;
@@ -117,16 +117,22 @@ namespace Pet_Shop
         {
             AtualizarProduto atualizarProduto = new AtualizarProduto();
             Dados_Produto produto = new Dados_Produto();
-
-            produto.codigo = Convert.ToInt32(txtID.Text);
-            produto.nome = txtNome.Text;
-            produto.tipo = cboTipo.Text;
-            produto.marca = txtMarca.Text;
-            produto.registro = dtpRegistro.Value;
-            atualizarProduto.AtualizarDados(produto);
-            CarregarGrid();
-            ConfiguraDataGridView();
-            MessageBox.Show(produto.msg, "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            if (txtNome.Text != "" && cboTipo.Text != "" && txtMarca.Text != "")
+            {
+                produto.codigo = Convert.ToInt32(txtID.Text);
+                produto.nome = txtNome.Text;
+                produto.tipo = cboTipo.Text;
+                produto.marca = txtMarca.Text;
+                produto.registro = dtpRegistro.Value;
+                atualizarProduto.AtualizarDados(produto);
+                CarregarGrid();
+                ConfiguraDataGridView();
+                MessageBox.Show(produto.msg, "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            else
+            {
+                MessageBox.Show("Preencha todos os espaços do cadastro!", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+            }
         }
 
         private void dgvListarProduto_CellContentClick(object sender, DataGridViewCellEventArgs e)

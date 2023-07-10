@@ -29,6 +29,7 @@ namespace Pet_Shop
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmHistorico));
             this.dgvFornecedor = new System.Windows.Forms.DataGridView();
             this.txtID = new System.Windows.Forms.TextBox();
             this.lblId = new System.Windows.Forms.Label();
@@ -52,10 +53,13 @@ namespace Pet_Shop
             // 
             // dgvFornecedor
             // 
+            this.dgvFornecedor.AllowUserToAddRows = false;
+            this.dgvFornecedor.AllowUserToDeleteRows = false;
             this.dgvFornecedor.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvFornecedor.Location = new System.Drawing.Point(36, 187);
+            this.dgvFornecedor.Location = new System.Drawing.Point(32, 357);
             this.dgvFornecedor.Margin = new System.Windows.Forms.Padding(4);
             this.dgvFornecedor.Name = "dgvFornecedor";
+            this.dgvFornecedor.ReadOnly = true;
             this.dgvFornecedor.Size = new System.Drawing.Size(1124, 420);
             this.dgvFornecedor.TabIndex = 0;
             this.dgvFornecedor.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvFornecedor_CellClick);
@@ -63,7 +67,7 @@ namespace Pet_Shop
             // txtID
             // 
             this.txtID.Enabled = false;
-            this.txtID.Location = new System.Drawing.Point(39, 68);
+            this.txtID.Location = new System.Drawing.Point(35, 238);
             this.txtID.Margin = new System.Windows.Forms.Padding(4);
             this.txtID.Name = "txtID";
             this.txtID.Size = new System.Drawing.Size(43, 26);
@@ -73,7 +77,7 @@ namespace Pet_Shop
             // lblId
             // 
             this.lblId.AutoSize = true;
-            this.lblId.Location = new System.Drawing.Point(36, 46);
+            this.lblId.Location = new System.Drawing.Point(32, 216);
             this.lblId.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblId.Name = "lblId";
             this.lblId.Size = new System.Drawing.Size(23, 18);
@@ -83,7 +87,7 @@ namespace Pet_Shop
             // lblFornecedor
             // 
             this.lblFornecedor.AutoSize = true;
-            this.lblFornecedor.Location = new System.Drawing.Point(107, 46);
+            this.lblFornecedor.Location = new System.Drawing.Point(103, 216);
             this.lblFornecedor.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblFornecedor.Name = "lblFornecedor";
             this.lblFornecedor.Size = new System.Drawing.Size(89, 18);
@@ -92,7 +96,7 @@ namespace Pet_Shop
             // 
             // txtFornecedor
             // 
-            this.txtFornecedor.Location = new System.Drawing.Point(110, 68);
+            this.txtFornecedor.Location = new System.Drawing.Point(106, 238);
             this.txtFornecedor.Margin = new System.Windows.Forms.Padding(4);
             this.txtFornecedor.Name = "txtFornecedor";
             this.txtFornecedor.Size = new System.Drawing.Size(110, 26);
@@ -101,7 +105,7 @@ namespace Pet_Shop
             // lblValidade
             // 
             this.lblValidade.AutoSize = true;
-            this.lblValidade.Location = new System.Drawing.Point(236, 46);
+            this.lblValidade.Location = new System.Drawing.Point(232, 216);
             this.lblValidade.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblValidade.Name = "lblValidade";
             this.lblValidade.Size = new System.Drawing.Size(70, 18);
@@ -110,7 +114,7 @@ namespace Pet_Shop
             // 
             // nudQtde
             // 
-            this.nudQtde.Location = new System.Drawing.Point(379, 68);
+            this.nudQtde.Location = new System.Drawing.Point(375, 238);
             this.nudQtde.Name = "nudQtde";
             this.nudQtde.Size = new System.Drawing.Size(40, 26);
             this.nudQtde.TabIndex = 7;
@@ -118,7 +122,7 @@ namespace Pet_Shop
             // lblQtde
             // 
             this.lblQtde.AutoSize = true;
-            this.lblQtde.Location = new System.Drawing.Point(376, 46);
+            this.lblQtde.Location = new System.Drawing.Point(372, 216);
             this.lblQtde.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblQtde.Name = "lblQtde";
             this.lblQtde.Size = new System.Drawing.Size(42, 18);
@@ -128,7 +132,7 @@ namespace Pet_Shop
             // lblPreco
             // 
             this.lblPreco.AutoSize = true;
-            this.lblPreco.Location = new System.Drawing.Point(448, 46);
+            this.lblPreco.Location = new System.Drawing.Point(444, 216);
             this.lblPreco.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblPreco.Name = "lblPreco";
             this.lblPreco.Size = new System.Drawing.Size(50, 18);
@@ -137,7 +141,7 @@ namespace Pet_Shop
             // 
             // txtPreco
             // 
-            this.txtPreco.Location = new System.Drawing.Point(451, 68);
+            this.txtPreco.Location = new System.Drawing.Point(447, 238);
             this.txtPreco.Margin = new System.Windows.Forms.Padding(4);
             this.txtPreco.Name = "txtPreco";
             this.txtPreco.Size = new System.Drawing.Size(110, 26);
@@ -147,7 +151,7 @@ namespace Pet_Shop
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(729, 46);
+            this.label1.Location = new System.Drawing.Point(725, 216);
             this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(63, 18);
@@ -156,7 +160,7 @@ namespace Pet_Shop
             // 
             // txtProduto
             // 
-            this.txtProduto.Location = new System.Drawing.Point(732, 68);
+            this.txtProduto.Location = new System.Drawing.Point(728, 238);
             this.txtProduto.Margin = new System.Windows.Forms.Padding(4);
             this.txtProduto.Name = "txtProduto";
             this.txtProduto.Size = new System.Drawing.Size(110, 26);
@@ -165,7 +169,7 @@ namespace Pet_Shop
             // lblRegistro
             // 
             this.lblRegistro.AutoSize = true;
-            this.lblRegistro.Location = new System.Drawing.Point(584, 46);
+            this.lblRegistro.Location = new System.Drawing.Point(580, 216);
             this.lblRegistro.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblRegistro.Name = "lblRegistro";
             this.lblRegistro.Size = new System.Drawing.Size(67, 18);
@@ -176,14 +180,15 @@ namespace Pet_Shop
             // 
             this.dtpRegistro.Enabled = false;
             this.dtpRegistro.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dtpRegistro.Location = new System.Drawing.Point(587, 68);
+            this.dtpRegistro.Location = new System.Drawing.Point(583, 238);
             this.dtpRegistro.Name = "dtpRegistro";
             this.dtpRegistro.Size = new System.Drawing.Size(120, 26);
             this.dtpRegistro.TabIndex = 14;
             // 
             // btnEditar
             // 
-            this.btnEditar.Location = new System.Drawing.Point(39, 115);
+            this.btnEditar.Enabled = false;
+            this.btnEditar.Location = new System.Drawing.Point(35, 285);
             this.btnEditar.Name = "btnEditar";
             this.btnEditar.Size = new System.Drawing.Size(89, 27);
             this.btnEditar.TabIndex = 15;
@@ -193,7 +198,8 @@ namespace Pet_Shop
             // 
             // btnDeletar
             // 
-            this.btnDeletar.Location = new System.Drawing.Point(153, 115);
+            this.btnDeletar.Enabled = false;
+            this.btnDeletar.Location = new System.Drawing.Point(149, 285);
             this.btnDeletar.Name = "btnDeletar";
             this.btnDeletar.Size = new System.Drawing.Size(86, 27);
             this.btnDeletar.TabIndex = 16;
@@ -204,7 +210,7 @@ namespace Pet_Shop
             // dtpValidade
             // 
             this.dtpValidade.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dtpValidade.Location = new System.Drawing.Point(239, 68);
+            this.dtpValidade.Location = new System.Drawing.Point(235, 238);
             this.dtpValidade.Name = "dtpValidade";
             this.dtpValidade.Size = new System.Drawing.Size(120, 26);
             this.dtpValidade.TabIndex = 17;
@@ -213,6 +219,8 @@ namespace Pet_Shop
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 18F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
+            this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(1200, 623);
             this.Controls.Add(this.dtpValidade);
             this.Controls.Add(this.btnDeletar);
@@ -231,10 +239,12 @@ namespace Pet_Shop
             this.Controls.Add(this.lblId);
             this.Controls.Add(this.txtID);
             this.Controls.Add(this.dgvFornecedor);
+            this.DoubleBuffered = true;
             this.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "frmHistorico";
             this.Text = "frmHistorico";
+            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.frmHistorico_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvFornecedor)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudQtde)).EndInit();

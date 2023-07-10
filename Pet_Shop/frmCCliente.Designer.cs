@@ -41,6 +41,10 @@ namespace Pet_Shop
             this.btnVender = new System.Windows.Forms.Button();
             this.dtpValidade = new System.Windows.Forms.DateTimePicker();
             this.btnAtualizar = new System.Windows.Forms.Button();
+            this.btnDeletar = new System.Windows.Forms.Button();
+            this.txtID = new System.Windows.Forms.TextBox();
+            this.lblID = new System.Windows.Forms.Label();
+            this.btnLimpar = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.nudQtde)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvListaProduto)).BeginInit();
             this.SuspendLayout();
@@ -48,7 +52,7 @@ namespace Pet_Shop
             // cboProduto
             // 
             this.cboProduto.FormattingEnabled = true;
-            this.cboProduto.Location = new System.Drawing.Point(403, 303);
+            this.cboProduto.Location = new System.Drawing.Point(523, 303);
             this.cboProduto.Margin = new System.Windows.Forms.Padding(4);
             this.cboProduto.Name = "cboProduto";
             this.cboProduto.Size = new System.Drawing.Size(180, 26);
@@ -56,7 +60,7 @@ namespace Pet_Shop
             // 
             // txtPreco
             // 
-            this.txtPreco.Location = new System.Drawing.Point(698, 303);
+            this.txtPreco.Location = new System.Drawing.Point(787, 303);
             this.txtPreco.Margin = new System.Windows.Forms.Padding(4);
             this.txtPreco.Name = "txtPreco";
             this.txtPreco.Size = new System.Drawing.Size(148, 26);
@@ -78,7 +82,7 @@ namespace Pet_Shop
             this.lblProduto.BackColor = System.Drawing.Color.SpringGreen;
             this.lblProduto.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblProduto.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.lblProduto.Location = new System.Drawing.Point(400, 281);
+            this.lblProduto.Location = new System.Drawing.Point(520, 281);
             this.lblProduto.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblProduto.Name = "lblProduto";
             this.lblProduto.Size = new System.Drawing.Size(71, 19);
@@ -90,7 +94,7 @@ namespace Pet_Shop
             this.lblPreco.AutoSize = true;
             this.lblPreco.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblPreco.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.lblPreco.Location = new System.Drawing.Point(698, 283);
+            this.lblPreco.Location = new System.Drawing.Point(787, 283);
             this.lblPreco.Name = "lblPreco";
             this.lblPreco.Size = new System.Drawing.Size(54, 19);
             this.lblPreco.TabIndex = 5;
@@ -101,7 +105,7 @@ namespace Pet_Shop
             this.lblValidade.AutoSize = true;
             this.lblValidade.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblValidade.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.lblValidade.Location = new System.Drawing.Point(950, 283);
+            this.lblValidade.Location = new System.Drawing.Point(1004, 283);
             this.lblValidade.Name = "lblValidade";
             this.lblValidade.Size = new System.Drawing.Size(74, 19);
             this.lblValidade.TabIndex = 6;
@@ -120,9 +124,12 @@ namespace Pet_Shop
             // 
             // dgvListaProduto
             // 
+            this.dgvListaProduto.AllowUserToAddRows = false;
+            this.dgvListaProduto.AllowUserToDeleteRows = false;
             this.dgvListaProduto.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvListaProduto.Location = new System.Drawing.Point(403, 384);
             this.dgvListaProduto.Name = "dgvListaProduto";
+            this.dgvListaProduto.ReadOnly = true;
             this.dgvListaProduto.Size = new System.Drawing.Size(1079, 272);
             this.dgvListaProduto.TabIndex = 9;
             this.dgvListaProduto.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvListaProduto_CellClick);
@@ -141,7 +148,7 @@ namespace Pet_Shop
             // dtpValidade
             // 
             this.dtpValidade.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dtpValidade.Location = new System.Drawing.Point(953, 303);
+            this.dtpValidade.Location = new System.Drawing.Point(1007, 303);
             this.dtpValidade.Name = "dtpValidade";
             this.dtpValidade.Size = new System.Drawing.Size(145, 26);
             this.dtpValidade.TabIndex = 11;
@@ -157,6 +164,43 @@ namespace Pet_Shop
             this.btnAtualizar.UseVisualStyleBackColor = true;
             this.btnAtualizar.Click += new System.EventHandler(this.btnAtualizar_Click);
             // 
+            // btnDeletar
+            // 
+            this.btnDeletar.Location = new System.Drawing.Point(499, 351);
+            this.btnDeletar.Name = "btnDeletar";
+            this.btnDeletar.Size = new System.Drawing.Size(90, 27);
+            this.btnDeletar.TabIndex = 13;
+            this.btnDeletar.Text = "Deletar";
+            this.btnDeletar.UseVisualStyleBackColor = true;
+            this.btnDeletar.Click += new System.EventHandler(this.btnDeletar_Click);
+            // 
+            // txtID
+            // 
+            this.txtID.Enabled = false;
+            this.txtID.Location = new System.Drawing.Point(403, 302);
+            this.txtID.Name = "txtID";
+            this.txtID.Size = new System.Drawing.Size(60, 26);
+            this.txtID.TabIndex = 14;
+            // 
+            // lblID
+            // 
+            this.lblID.AutoSize = true;
+            this.lblID.Location = new System.Drawing.Point(400, 281);
+            this.lblID.Name = "lblID";
+            this.lblID.Size = new System.Drawing.Size(23, 18);
+            this.lblID.TabIndex = 15;
+            this.lblID.Text = "ID";
+            // 
+            // btnLimpar
+            // 
+            this.btnLimpar.Location = new System.Drawing.Point(595, 351);
+            this.btnLimpar.Name = "btnLimpar";
+            this.btnLimpar.Size = new System.Drawing.Size(90, 27);
+            this.btnLimpar.TabIndex = 16;
+            this.btnLimpar.Text = "Limpar";
+            this.btnLimpar.UseVisualStyleBackColor = true;
+            this.btnLimpar.Click += new System.EventHandler(this.btnLimpar_Click);
+            // 
             // frmCCliente
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 18F);
@@ -164,6 +208,10 @@ namespace Pet_Shop
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(1551, 665);
+            this.Controls.Add(this.btnLimpar);
+            this.Controls.Add(this.lblID);
+            this.Controls.Add(this.txtID);
+            this.Controls.Add(this.btnDeletar);
             this.Controls.Add(this.btnAtualizar);
             this.Controls.Add(this.dtpValidade);
             this.Controls.Add(this.btnVender);
@@ -203,5 +251,9 @@ namespace Pet_Shop
         private System.Windows.Forms.Button btnVender;
         private System.Windows.Forms.DateTimePicker dtpValidade;
         private System.Windows.Forms.Button btnAtualizar;
+        private System.Windows.Forms.Button btnDeletar;
+        private System.Windows.Forms.TextBox txtID;
+        private System.Windows.Forms.Label lblID;
+        private System.Windows.Forms.Button btnLimpar;
     }
 }

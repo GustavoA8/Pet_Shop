@@ -58,6 +58,7 @@ namespace Pet_Shop
             // 
             // mnuCliente
             // 
+            this.mnuCliente.Enabled = false;
             this.mnuCliente.Name = "mnuCliente";
             this.mnuCliente.Size = new System.Drawing.Size(56, 20);
             this.mnuCliente.Text = "Cliente";
@@ -65,6 +66,7 @@ namespace Pet_Shop
             // 
             // mnuAnimal
             // 
+            this.mnuAnimal.Enabled = false;
             this.mnuAnimal.Name = "mnuAnimal";
             this.mnuAnimal.Size = new System.Drawing.Size(57, 20);
             this.mnuAnimal.Text = "Animal";
@@ -72,6 +74,7 @@ namespace Pet_Shop
             // 
             // mnnuConexao
             // 
+            this.mnnuConexao.Enabled = false;
             this.mnnuConexao.Name = "mnnuConexao";
             this.mnnuConexao.Size = new System.Drawing.Size(66, 20);
             this.mnnuConexao.Text = "Conexao";
@@ -116,6 +119,7 @@ namespace Pet_Shop
             this.MainMenuStrip = this.mnuPrincipal;
             this.Name = "frmPrincipal";
             this.Text = "frmPrincipal";
+            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.mnuPrincipal.ResumeLayout(false);
             this.mnuPrincipal.PerformLayout();
             this.ResumeLayout(false);

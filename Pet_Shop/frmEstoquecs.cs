@@ -43,8 +43,8 @@ namespace Pet_Shop
                 dgvListarEstoque.Columns[1].HeaderText = "Nome";
                 dgvListarEstoque.Columns[2].HeaderText = "Quantidade";
                 //Configurar a largura das colunas no DataGridView
-                dgvListarEstoque.Columns[0].Width = 50;
-                dgvListarEstoque.Columns[1].Width = 150;
+                dgvListarEstoque.Columns[0].Width = 100;
+                dgvListarEstoque.Columns[1].Width = 300;
                 //Alinhar o conteúdo das colunas
                 dgvListarEstoque.Columns[0].DefaultCellStyle.Alignment =
                 DataGridViewContentAlignment.MiddleCenter;

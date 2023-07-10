@@ -661,6 +661,94 @@ namespace PetMarket
             }
         }
     }
+    public class DeletarVenda
+    {
+        public void DeletarDados(Dados_Produto dados)
+        {
+            try
+            {
+                string sql = "DELETE FROM tb_venda WHERE id_ven=@codigo";
+                //Variável que receberá o resultado da Conexão e Delete
+                MySqlCommand cmd = new MySqlCommand(sql, Conexao.obterConexao());
+                //Declarar o tipo de comando: Text ou Procedure
+                cmd.CommandType = CommandType.Text;
+                //Parâmetros que serão substituídos
+                cmd.Parameters.Add(new MySqlParameter("@codigo", dados.codigo));
+                //Execução do comando
+                int registrosDeletados = cmd.ExecuteNonQuery();
+                //Verificação da exclusão do registros
+                if (registrosDeletados >= 1)
+                {
+                    dados.msg = "Registro deletado com Sucesso!";
+                }
+                else
+                {
+                    dados.msg = "Falha ao deletar o registro!";
+                }
+                Conexao.fecharConexao();
+            }
+            catch (MySqlException erro)
+            {
+
+                dados.msg = "ERRO - DeletarVenda - DeletarDados -" + erro.ErrorCode + erro.Message;
+            }
+        }
+        public void DVEstoque(Dados_Produto dados)
+        {
+            int qtde = new int();
+            try
+            {
+                string sql = "SELECT ven_qtde, est_qtde FROM tb_venda INNER JOIN tb_estoque ON est_id_pdt = ven_id_pdt WHERE id_ven=@codigo ";
+                MySqlCommand cmd = new MySqlCommand(sql, Conexao.obterConexao());
+                //Define o tipo de comando
+                cmd.CommandType = CommandType.Text;
+                cmd.Parameters.Add(new MySqlParameter("@codigo", dados.codigo));
+                //Realiza a leitura dos dados - Reader
+                //Ignora os títulos da tabela
+                MySqlDataReader dr = cmd.ExecuteReader();
+                //Verifica se há linhas nesta leitura de dados
+                if (dr.HasRows)
+                {
+                    //Enquanto houver dados
+                    while (dr.Read())
+                    {
+                        dados.quantidade = dr.GetInt32(0);
+                        qtde = dr.GetInt32(1);
+                        qtde += dados.quantidade;
+                    }//11 + 1 = 12
+                }
+                Conexao.fecharConexao();
+            }
+            catch (MySqlException erro)
+            {
+                dados.msg = "ERRO - DeletarVenda - DVEstoque -" + erro.ErrorCode + erro.Message;
+            }
+            try
+            {
+                string sql = "UPDATE tb_estoque SET est_qtde=@qtde WHERE est_id_pdt=@codigo";
+                MySqlCommand cmd = new MySqlCommand(sql, Conexao.obterConexao());
+                cmd.CommandType = CommandType.Text;
+                cmd.Parameters.Add(new MySqlParameter("@qtde", qtde));
+                cmd.Parameters.Add(new MySqlParameter("@codigo", dados.produto));
+                int registrosAtualizados = cmd.ExecuteNonQuery();
+                //Verifica se algum registro foi atualizado
+                if (registrosAtualizados >= 1)
+                {
+                    dados.msg = "Sucesso ao atualizar o registro!";
+                }
+                else
+                {
+                    dados.msg = "Falha ao atualizar o registro!";
+                }
+                Conexao.fecharConexao();
+
+            }
+            catch (MySqlException erro)
+            {
+                dados.msg = "ERRO - DeletarVenda - DCVenda -" + erro.ErrorCode + erro.Message;
+            }
+        }
+    }
     public class ConsultarEstoque
     {
         public DataTable ListarDadosProdutos(Dados_Produto dados)

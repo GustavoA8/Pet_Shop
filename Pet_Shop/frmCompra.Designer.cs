@@ -29,7 +29,7 @@ namespace Pet_Shop
         /// </summary>
         private void InitializeComponent()
         {
-            this.lblTitulo = new System.Windows.Forms.Label();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmCompra));
             this.label1 = new System.Windows.Forms.Label();
             this.txtID = new System.Windows.Forms.TextBox();
             this.lblPreco = new System.Windows.Forms.Label();
@@ -51,17 +51,6 @@ namespace Pet_Shop
             ((System.ComponentModel.ISupportInitialize)(this.nmrQtde)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvListarProduto)).BeginInit();
             this.SuspendLayout();
-            // 
-            // lblTitulo
-            // 
-            this.lblTitulo.AutoSize = true;
-            this.lblTitulo.Font = new System.Drawing.Font("Arial", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblTitulo.Location = new System.Drawing.Point(852, 221);
-            this.lblTitulo.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.lblTitulo.Name = "lblTitulo";
-            this.lblTitulo.Size = new System.Drawing.Size(167, 32);
-            this.lblTitulo.TabIndex = 0;
-            this.lblTitulo.Text = "Fornecedor";
             // 
             // label1
             // 
@@ -193,9 +182,12 @@ namespace Pet_Shop
             // 
             // dgvListarProduto
             // 
+            this.dgvListarProduto.AllowUserToAddRows = false;
+            this.dgvListarProduto.AllowUserToDeleteRows = false;
             this.dgvListarProduto.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvListarProduto.Location = new System.Drawing.Point(680, 521);
             this.dgvListarProduto.Name = "dgvListarProduto";
+            this.dgvListarProduto.ReadOnly = true;
             this.dgvListarProduto.Size = new System.Drawing.Size(497, 226);
             this.dgvListarProduto.TabIndex = 22;
             this.dgvListarProduto.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvListarProduto_CellClick);
@@ -225,6 +217,8 @@ namespace Pet_Shop
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 18F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
+            this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(1320, 691);
             this.Controls.Add(this.btnLimpar);
             this.Controls.Add(this.btnHistorico);
@@ -244,7 +238,7 @@ namespace Pet_Shop
             this.Controls.Add(this.lblPreco);
             this.Controls.Add(this.txtID);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.lblTitulo);
+            this.DoubleBuffered = true;
             this.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.Name = "frmCompra";
@@ -259,8 +253,6 @@ namespace Pet_Shop
         }
 
         #endregion
-
-        private System.Windows.Forms.Label lblTitulo;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox txtID;
         private System.Windows.Forms.Label lblPreco;

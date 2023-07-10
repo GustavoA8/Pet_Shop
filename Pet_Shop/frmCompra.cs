@@ -22,8 +22,10 @@ namespace Pet_Shop
 
         private void btnSalvar_Click(object sender, EventArgs e)
         {
-            Dados_Produto produto = new Dados_Produto();
-            SalvarCompra salvarCompra = new SalvarCompra();
+            if (txtFornecedor.Text != "" || txtPreco.Text != "" || nmrQtde.Value <= 0)
+            {
+                Dados_Produto produto = new Dados_Produto();
+                SalvarCompra salvarCompra = new SalvarCompra();
                 produto.codigo = Convert.ToInt32(txtID.Text);
                 produto.nome = txtProduto.Text;
                 produto.registro = dtpRegistro.Value;
@@ -31,12 +33,17 @@ namespace Pet_Shop
                 produto.quantidade = Convert.ToInt32(nmrQtde.Value);
                 produto.validade = dtpValidade.Value;
                 produto.fornecedor = txtFornecedor.Text;
-            produto.total = Convert.ToDecimal(produto.quantidade) * Convert.ToDecimal(produto.preco);
-            salvarCompra.InserirDados(produto);
-            salvarCompra.CEstoque(produto);
-            MessageBox.Show(produto.msg);
-            CarregarGrid();
-            LimparCampos();
+                produto.total = Convert.ToDecimal(produto.quantidade) * Convert.ToDecimal(produto.preco);
+                salvarCompra.InserirDados(produto);
+                salvarCompra.CEstoque(produto);
+                MessageBox.Show(produto.msg);
+                CarregarGrid();
+                LimparCampos();
+            }
+            else
+            {
+                MessageBox.Show("Preencha todos os espaços vazios", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
             
         }
         private void LimparCampos()

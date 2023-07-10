@@ -29,6 +29,7 @@ namespace Pet_Shop
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmCProdutos));
             this.lblID = new System.Windows.Forms.Label();
             this.lblTipo = new System.Windows.Forms.Label();
             this.lblNome = new System.Windows.Forms.Label();
@@ -187,9 +188,12 @@ namespace Pet_Shop
             // 
             // dgvListarProduto
             // 
+            this.dgvListarProduto.AllowUserToAddRows = false;
+            this.dgvListarProduto.AllowUserToDeleteRows = false;
             this.dgvListarProduto.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvListarProduto.Location = new System.Drawing.Point(893, 349);
             this.dgvListarProduto.Name = "dgvListarProduto";
+            this.dgvListarProduto.ReadOnly = true;
             this.dgvListarProduto.Size = new System.Drawing.Size(512, 250);
             this.dgvListarProduto.TabIndex = 20;
             this.dgvListarProduto.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvListarProduto_CellClick);
@@ -221,6 +225,8 @@ namespace Pet_Shop
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 18F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
+            this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(1506, 666);
             this.Controls.Add(this.btnAtualizar);
             this.Controls.Add(this.lblProdutos);
@@ -239,6 +245,7 @@ namespace Pet_Shop
             this.Controls.Add(this.lblNome);
             this.Controls.Add(this.lblTipo);
             this.Controls.Add(this.lblID);
+            this.DoubleBuffered = true;
             this.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "frmCProdutos";

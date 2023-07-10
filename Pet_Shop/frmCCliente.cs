@@ -64,6 +64,7 @@ namespace Pet_Shop
             if (e.RowIndex >= 0)
             {
                 //TextBox = DataGridView.LinhaSelecionada.Célula[Posição].Valor.ParaTexto
+                txtID.Text = dgvListaProduto.Rows[e.RowIndex].Cells[0].Value.ToString();
                 cboProduto.SelectedValue = dgvListaProduto.Rows[e.RowIndex].Cells[1].Value.ToString();
                 txtPreco.Text = dgvListaProduto.Rows[e.RowIndex].Cells[2].Value.ToString();
                 dtpValidade.Text = dgvListaProduto.Rows[e.RowIndex].Cells[3].Value.ToString();
@@ -120,6 +121,7 @@ namespace Pet_Shop
             CarregarGrid();
             ConfigurarDataGridView();
             MessageBox.Show(produto.msg, "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            Limpar();
 
         }
 
@@ -160,6 +162,7 @@ namespace Pet_Shop
                 MessageBox.Show("Estoque do produto insuficiente", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
             }
             CarregarGrid();
+            Limpar();
         }
 
         private void txtPreco_TextChanged(object sender, EventArgs e)
@@ -171,6 +174,45 @@ namespace Pet_Shop
         {
             if ((Char.IsLetter(e.KeyChar)) || (Char.IsWhiteSpace(e.KeyChar))) 
                 e.Handled = true;
+        }
+
+        private void btnDeletar_Click(object sender, EventArgs e)
+        {
+            DeletarVenda deletarVenda = new DeletarVenda();
+            //Instanciar a Classe ClientesDTO - Atributos/Variáveis
+            Dados_Produto produto = new Dados_Produto();
+            //Armazenar o código para exclusão
+            produto.codigo = Convert.ToInt32(txtID.Text);
+            produto.produto =Convert.ToInt32(cboProduto.SelectedValue);
+
+            //Confirmação para exclusão do registro
+            DialogResult confirmacao = MessageBox.Show("Deseja deletar o registro? Código " +
+            txtID.Text, "Aviso", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            if (confirmacao == DialogResult.Yes)
+            {
+                //Executar o método de exclusão
+                deletarVenda.DVEstoque(produto);
+                deletarVenda.DeletarDados(produto);
+                CarregarGrid();
+                ConfigurarDataGridView();
+                Limpar();
+                MessageBox.Show(produto.msg, "Aviso", MessageBoxButtons.OK,
+                MessageBoxIcon.Information);
+            }
+        }
+
+        private void Limpar()
+        {
+            txtID.Clear();
+            cboProduto.SelectedIndex = -1;
+            txtPreco.Clear();
+            dtpValidade.Value = DateTime.Now;
+            nudQtde.Value = 0;
+        }
+
+        private void btnLimpar_Click(object sender, EventArgs e)
+        {
+            Limpar();
         }
     }
 }
